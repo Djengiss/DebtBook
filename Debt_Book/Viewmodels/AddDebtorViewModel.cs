@@ -36,16 +36,16 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-        public ICommand SaveCommand { get; set; }
+        public ICommand SaveDebtCommand { get; set; }
         public ICommand CancelCommand { get; set;}
 
         public AddDebtorViewModel()
         {
-            SaveCommand = new Command(SaveDebt);
+            SaveDebtCommand = new Command(async () => await SaveDebt());
             CancelCommand = new Command(ClearInput);
         }
 
-        private void SaveDebt()
+        private async Task SaveDebt()
         {
             if (!string.IsNullOrEmpty(Name) && InitialValue > 0)
             {
@@ -54,8 +54,7 @@ namespace Debt_Book.Viewmodels
             else
             { 
                 // Trigger any UI bound to ErrorMessage to update, perhaps showing an alert or message box.
-            }
-            
+            }      
         }
 
         private void ClearInput()
