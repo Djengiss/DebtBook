@@ -45,7 +45,7 @@
             VerticalOptions="Start"
             HasShadow="False">
             <Entry Placeholder="Value"
-                x:Name="nameEntry"
+                x:Name="valueEntry"
                 WidthRequest="200"
                 FontSize="48"
                 TextColor="Black"

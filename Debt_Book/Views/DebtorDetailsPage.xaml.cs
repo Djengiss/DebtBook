@@ -1,5 +1,5 @@
 
-namespace DebtBook.Views;
+namespace Debt_Book.Views;
 
 public partial class DebtorDetailsPage : ContentPage
 {
