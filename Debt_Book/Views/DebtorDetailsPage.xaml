@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DebtBook.Views.DebtorDetailsPage"
+             Title="DebtorDetailsPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <BoxView Grid.Row="0"
+             Grid.ColumnSpan="2"
+             Color="white" />
+        <Label Text="Debtor Details"
+           Grid.ColumnSpan="2"
+           TextColor="Black"
+           FontSize="52"
+           FontAttributes="Bold"
+           HorizontalOptions="Center"
+           HorizontalTextAlignment="Center">
+            <Label.Shadow>
+                <Shadow Brush="Black" 
+            Offset="5,5" 
+            Radius="10" 
+            Opacity="0.8"/>
+            </Label.Shadow>
+        </Label>
+
+        <BoxView Grid.Row="1"
+           Grid.ColumnSpan="2"
+           Color="white" />
+        <Frame Grid.Row="1"
+            Grid.ColumnSpan="1"
+            Grid.Column="1"
+            HeightRequest="75"
+            BackgroundColor="Transparent"
+            Padding="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            HasShadow="False">
+            <Entry Placeholder="Value"
+                x:Name="nameEntry"
+                WidthRequest="200"
+                FontSize="48"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+        </Frame>
+        <Frame Grid.Row="1"
+                Grid.ColumnSpan="1"
+                Grid.Column="0"
+               HeightRequest="300"
+                BackgroundColor="Transparent"
+                Padding="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                HasShadow="False">
+            <Entry Placeholder="Name"
+               Text="Name"
+               x:Name="nameEntry"
+               WidthRequest="500"
+               FontSize="48"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        </Frame>
+        <Button Grid.Row="1"
+                Grid.ColumnSpan="1"
+                Grid.Column="2"
+                Margin="0,0,0,150"
+                x:Name="AddBtn"
+                HeightRequest="75"
+                WidthRequest="200"
+                Text="Add"
+                Command="{Binding SaveCommand}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" 
+                />
+
+        <BoxView Grid.Row="2"
+           Grid.ColumnSpan="2"
+           Color="white" />
+        <Button Grid.Row="2"
+            x:Name="CloseBtn"
+            
+            HeightRequest="75"
+            WidthRequest="200"
+            Grid.Column="0"
+            Text="Close"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            />
+
+    </Grid>
+</ContentPage>

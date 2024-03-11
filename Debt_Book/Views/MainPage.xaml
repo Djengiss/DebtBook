@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DebtBook.Views.MainPage"
+             Title="MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".1*"/>
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <BoxView Grid.Row="0"
+             Grid.ColumnSpan="2"
+             Color="white" />
+        <Label Text="Main Page"
+           Grid.ColumnSpan="2"
+           TextColor="Black"
+           FontSize="52"
+           FontAttributes="Bold"
+           HorizontalOptions="Center"
+           HorizontalTextAlignment="Center">
+            <Label.Shadow>
+                <Shadow Brush="Black" 
+            Offset="5,5" 
+            Radius="10" 
+            Opacity="0.8"/>
+            </Label.Shadow>
+        </Label>
+
+        <BoxView Grid.Row="1"
+           Grid.ColumnSpan="2"
+           Color="white" />
+        <Button Grid.Row="1"
+                Grid.ColumnSpan="1"
+                Grid.Column="1"
+                x:Name="AddBtn"
+                HeightRequest="75"
+                WidthRequest="200"
+                Text="Add"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" 
+                />
+        <Frame Grid.Row="1"
+           Grid.ColumnSpan="1"
+           BackgroundColor="Transparent"
+           Padding="0"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           HasShadow="False">
+            <Entry Grid.Row="2"
+                
+               Text="ValueEntry"
+               Keyboard="Numeric"
+               x:Name="valueEntry"
+               Grid.ColumnSpan="2"
+               Placeholder="Initial Value"
+               FontSize="48"
+               WidthRequest="500"
+                   HeightRequest="500"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        </Frame>
+        
+
+        <BoxView Grid.Row="2"
+           Grid.ColumnSpan="2"
+           Color="white" />
+
+
+        <BoxView Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Color="white" />
+        
+    </Grid>
+
+</ContentPage>
