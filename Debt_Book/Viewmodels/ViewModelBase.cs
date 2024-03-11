@@ -31,5 +31,8 @@ namespace Debt_Book.Viewmodels
             }
         }
         #endregion
+        #region INavigation
+        INavigation Navigation { get; set; }
+        #endregion
     }
 }
