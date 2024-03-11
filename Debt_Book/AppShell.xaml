@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Debt App"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate local:AddDebtorPage}"
         Route="MainPage"
         />
 

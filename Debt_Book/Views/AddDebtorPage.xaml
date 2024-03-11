@@ -6,7 +6,7 @@
              Title="AddDebtorPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height="*"/>
@@ -18,69 +18,70 @@
 
         <BoxView Grid.Row="0"
                  Grid.ColumnSpan="2"
-                 Color="white" />
-        <Label Text="Add debtor"
-               Grid.ColumnSpan="2"
-               TextColor="Black"
-               FontSize="52"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"
-               HorizontalTextAlignment="Center">
-            <Label.Shadow>
-                <Shadow Brush="Black" 
-                Offset="5,5" 
-                Radius="10" 
-                Opacity="0.8"/>
-            </Label.Shadow>
-        </Label>
+                  />
+    
+        <Label
+            Text="Name"
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            Grid.ColumnSpan="2"
+            Margin="0,20,0,0"
+            />
 
         <BoxView Grid.Row="1"
                Grid.ColumnSpan="2"
-               Color="white" />
+                />
         <Frame Grid.Row="1"
                Grid.ColumnSpan="2"
                BackgroundColor="Transparent"
                Padding="0"
                HorizontalOptions="Center"
-               VerticalOptions="Center"
+               VerticalOptions="Start"
+               Margin="0,20,0,0"
                HasShadow="False">
             <Entry Placeholder="Name"
                    Text="{Binding Name}"
                    x:Name="nameEntry"
                    WidthRequest="400"
                    FontSize="48"
-                   TextColor="Black"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                   />
         </Frame>
 
         <BoxView Grid.Row="2"
                Grid.ColumnSpan="2"
-               Color="white" />
+                />
+        <Label
+            Text="Initial Value"
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            Grid.ColumnSpan="2"
+            VerticalOptions="End"
+            Margin="0,0,0,30"
+            />
+
         <Frame Grid.Row="2"
                Grid.ColumnSpan="2"
                BackgroundColor="Transparent"
                Padding="0"
                HorizontalOptions="Center"
-               VerticalOptions="Center"
+               VerticalOptions="Start"
                HasShadow="False">
             <Entry Grid.Row="2"
                    Text="{Binding InitialValue, StringFormat='{0:N2}'}"
                    Keyboard="Numeric"
                    x:Name="valueEntry"
                    Grid.ColumnSpan="2"
+                   Margin="0,0,0,0"
                    Placeholder="Initial Value"
                    FontSize="48"
                    WidthRequest="400"
-                   TextColor="Black"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                   />
         </Frame>
 
 
         <BoxView Grid.Row="3"
                 Grid.ColumnSpan="2"
-                Color="white" />
+                />
         <Button Grid.Row="3"
                 x:Name="SaveBtn"
                 Command="{Binding SaveCommand}"
@@ -94,6 +95,7 @@
         <Button Grid.Row="3"
                 x:Name="CancelBtn"
                 Command="{Binding CancelCommand}"
+                BackgroundColor="red"
                 HeightRequest="75"
                 WidthRequest="200"
                 Grid.Column="1"
