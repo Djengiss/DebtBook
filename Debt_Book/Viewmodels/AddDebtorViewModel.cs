@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 // Responsible for providing data and logic for the AddDebtorPage.xaml.
 // Handles interactions and data binding for the add debtor page.
-namespace DebtBook.Viewmodels
+namespace Debt_Book.Viewmodels
 {
     internal class AddDebtorViewModel : ViewModelBase
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 // Responsible for defining the Credit model class.
 // Contains properties that represent attributes of a debt, such as description and amount.
-namespace DebtBook.Models
+namespace Debt_Book.Models
 {
     public class Credit
     {

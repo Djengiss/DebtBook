@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 // Responsible for defining the Debtor model class.
 // Contains properties that represent attributes of a debtor, such as name and amount owed.
-namespace DebtBook.Models
+namespace Debt_Book.Models
 {
     public class Debtor
     {

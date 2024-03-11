@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 // Responsible for providing data and logic for the DebtorDetailsPage.xaml.
 // Handles interactions and data binding for the debtor details page.
-namespace DebtBook.Viewmodels
+namespace Debt_Book.Viewmodels
 {
     internal class DebtorDetailsViewModel : ViewModelBase
     {

@@ -1,4 +1,4 @@
-﻿namespace DebtBook
+﻿namespace Debt_Book
 {
     public partial class AppShell : Shell
     {
