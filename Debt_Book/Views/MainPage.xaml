@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Debt_Book.Views.MainPage"
              Title="MainPage">
 
@@ -46,6 +47,7 @@
                 Text="Add"
                 HorizontalOptions="Center"
                 VerticalOptions="Start" 
+                Command="{Binding AddNewDebtorCommand}"
                 />
         <Frame Grid.Row="1"
            Grid.ColumnSpan="1"
@@ -54,7 +56,31 @@
            HorizontalOptions="Center"
            VerticalOptions="Center"
            HasShadow="False">
-            <Entry Grid.Row="2"
+            <CollectionView Grid.Row="2" 
+                            ItemsSource="{Binding Debtors}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid WidthRequest="350"
+                              Padding="10"
+                              Margin="0,20"
+                              ColumnDefinitions="2*,5*"
+                              RowDefinitions="Auto,50"
+                              x:Name="DebtorItem">
+                            <Label Text="{Binding DebtorName}"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="WordWrap"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="Large"
+                                   Grid.Row="0"
+                                   Grid.Column="1" />
+                            <Label Text="{Binding AmountDue}"
+                                   Grid.Row="1"
+                                   Grid.Column="1" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--<Entry Grid.Row="2"
                 
                Text="ValueEntry"
                Keyboard="Numeric"
@@ -66,7 +92,7 @@
                    HeightRequest="500"
                TextColor="Black"
                HorizontalOptions="Center"
-               VerticalOptions="Center" />
+               VerticalOptions="Center" />-->
         </Frame>
         
 
