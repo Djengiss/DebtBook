@@ -68,8 +68,4 @@
 	  </MauiXaml>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Styles\" />
-	</ItemGroup>
-
 </Project>
