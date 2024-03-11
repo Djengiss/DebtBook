@@ -15,7 +15,7 @@ namespace Debt_Book.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public string DebtorId { get; set; }
+        public int DebtorId { get; set; }
 
         public string Date { get; set; }
 
