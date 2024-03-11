@@ -42,14 +42,14 @@ namespace Debt_Book.Viewmodels
         public AddDebtorViewModel()
         {
             SaveDebtCommand = new Command(async () => await SaveDebt());
-            CancelCommand = new Command(ClearInput);
+            CancelCommand = new Command(async () => await ClearInput());
         }
 
         private async Task SaveDebt()
         {
             if (!string.IsNullOrEmpty(Name) && InitialValue > 0)
             {
-                // skal sendes til database
+                
             }
             else
             { 
@@ -57,7 +57,7 @@ namespace Debt_Book.Viewmodels
             }      
         }
 
-        private void ClearInput()
+        private async Task ClearInput()
         {
             Name = string.Empty;
             InitialValue = 0;
