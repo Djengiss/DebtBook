@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Debt_Book.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -54,12 +55,14 @@ namespace Debt_Book.Viewmodels
             { 
                 // Trigger any UI bound to ErrorMessage to update, perhaps showing an alert or message box.
             }
+            
         }
 
         private void ClearInput()
         {
             Name = string.Empty;
             InitialValue = 0;
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -67,5 +70,22 @@ namespace Debt_Book.Viewmodels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        //public async Task AddNewDebtor()
+        //{
+        //    var debtor = new Debtor
+        //    {
+        //        AmountOwed = DebtorOwn,
+        //        Name = DebtorName
+        //    };
+        //    var inserted = await _database.AddDebt(debt);
+        //    if (inserted != 0)
+        //    {
+        //        Debtor.Add(debt);
+        //        NewTodoTitle = String.Empty;
+        //        NewTodoDue = DateTime.Now;
+        //        RaisePropertyChanged(nameof(NewTodoDue), nameof(NewTodoTitle));
+        //    }
+        //}
     }
 }
