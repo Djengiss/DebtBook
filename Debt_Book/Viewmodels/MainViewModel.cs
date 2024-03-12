@@ -41,8 +41,7 @@ namespace Debt_Book.Viewmodels
 
         private async Task AddDebtor()
         {
-            await NavigationService.NavigateToAsync("//Main");
-            await _navigationService.NavigateToAsync<AddDebtorViewModel>();
+            _navigationService.NavigateToAsync<AddDebtorPage>();
         }
 
         private async Task ViewDebtorInfo()
