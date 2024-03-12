@@ -1,4 +1,5 @@
 ﻿using Debt_Book.Models;
+using Debt_Book.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,11 +37,16 @@ namespace Debt_Book.Viewmodels
             }
         }
 
+        private readonly DebtDatabase _debtDatabase;
+
         public ICommand SaveDebtCommand { get; set; }
         public ICommand CancelCommand { get; set;}
 
-        public AddDebtorViewModel()
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public AddDebtorViewModel(DebtDatabase debtDatabase)
         {
+            _debtDatabase = debtDatabase;
             SaveDebtCommand = new Command(async () => await SaveDebt());
             CancelCommand = new Command(async () => await ClearInput());
         }
@@ -49,42 +55,39 @@ namespace Debt_Book.Viewmodels
         {
             if (!string.IsNullOrEmpty(Name) && InitialValue > 0)
             {
-                
+
+                var debtor = new Debtor
+                {
+                    Name = Name
+                };
+
+                await _debtDatabase.AddDebtor(debtor);
+
+                var debt = new Debt
+                {
+                    DebtorId = debtor.Id,
+                    Amount = InitialValue,
+                };
+
+                await _debtDatabase.AddDebt(debt);
+
+                await ClearInput();
+
             }
-            else
-            { 
-                // Trigger any UI bound to ErrorMessage to update, perhaps showing an alert or message box.
-            }      
         }
 
         private async Task ClearInput()
         {
             Name = string.Empty;
             InitialValue = 0;
-            
+
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        //public async Task AddNewDebtor()
-        //{
-        //    var debtor = new Debtor
-        //    {
-        //        AmountOwed = DebtorOwn,
-        //        Name = DebtorName
-        //    };
-        //    var inserted = await _database.AddDebt(debt);
-        //    if (inserted != 0)
-        //    {
-        //        Debtor.Add(debt);
-        //        NewTodoTitle = String.Empty;
-        //        NewTodoDue = DateTime.Now;
-        //        RaisePropertyChanged(nameof(NewTodoDue), nameof(NewTodoTitle));
-        //    }
-        //}
     }
 }

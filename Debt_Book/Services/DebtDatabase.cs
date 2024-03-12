@@ -74,5 +74,10 @@ namespace Debt_Book.Services
         {
             return await _connection.UpdateAsync(item);
         }
+
+        public async Task<int> AddDebtor(Debtor debtor)
+        {
+            return await _connection.InsertAsync(debtor);
+        }
     }
 }
