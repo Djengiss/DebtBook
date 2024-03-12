@@ -25,14 +25,14 @@ namespace Debt_Book.Services
             _mappings[typeof(AddDebtorViewModel)] = typeof(AddDebtorPage);
         }
 
-        public async Task NavigateToAsync<TViewModel>(object parameters = null) where TViewModel : ViewModelBase 
+        public async Task NavigateToAsync<TViewModel>(TViewModel viewModel) where TViewModel : ViewModelBase 
         {
             Type pageType = _mappings[typeof(TViewModel)];
             Page page = (Page)Activator.CreateInstance(pageType);
             if (page != null)
             {
                 // Set the BindingContext of the page to the ViewModel.
-                page.BindingContext = Activator.CreateInstance(typeof(TViewModel));
+                page.BindingContext = viewModel;
 
                 await Application.Current.MainPage.Navigation.PushAsync(page);
             }

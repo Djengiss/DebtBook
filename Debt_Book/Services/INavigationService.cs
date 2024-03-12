@@ -10,7 +10,7 @@ namespace Debt_Book.Services
 {
     public interface INavigationService
     {
-        Task NavigateToAsync<TViewModel>(Object parameter = null) where TViewModel : ViewModelBase;
+        Task NavigateToAsync<TViewModel>(TViewModel viewModel) where TViewModel : ViewModelBase;
         Task PopAsync();
     }
 }

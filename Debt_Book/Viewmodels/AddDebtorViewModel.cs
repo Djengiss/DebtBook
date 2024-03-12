@@ -36,19 +36,21 @@ namespace Debt_Book.Viewmodels
                 OnPropertyChanged(nameof(InitialValue));
             }
         }
-
+        private readonly INavigationService _navigationService;
         private readonly DebtDatabase _debtDatabase;
 
         public ICommand SaveCommand { get; set; }
-        
+        public ICommand CancelCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public AddDebtorViewModel()
+        public AddDebtorViewModel(INavigationService navigationService, DebtDatabase debtDatabase)
         {
-            //_debtDatabase = debtDatabase;
+            _navigationService = navigationService;
+            _debtDatabase = debtDatabase;
             SaveCommand = new Command(async () => await SaveDebt());
-            
+            CancelCommand = new Command(async () => await CancelAndNavigateBack());
+
         }
 
         private async Task SaveDebt()
@@ -71,16 +73,22 @@ namespace Debt_Book.Viewmodels
 
                 await _debtDatabase.AddDebt(debt);
 
-                ClearInput();
+                ClearInputFields();
 
             }
         }
 
-        private void ClearInput()
+        private void ClearInputFields()
         {
             Name = string.Empty;
             InitialValue = 0;
             
+        }
+
+        private async Task CancelAndNavigateBack()
+        {
+            ClearInputFields();
+            await _navigationService.PopAsync();
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

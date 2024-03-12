@@ -42,7 +42,8 @@ namespace Debt_Book.Viewmodels
 
         public ICommand AddNewDebtorCommand => new Command(async () =>
         {
-            await _navigationService.NavigateToAsync<AddDebtorViewModel>();
+            var addDebtorViewModel = new AddDebtorViewModel(_navigationService, _database);
+            await _navigationService.NavigateToAsync(addDebtorViewModel);
         });
 
         private async Task ViewDebtorInfo()
