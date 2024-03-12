@@ -18,12 +18,13 @@ namespace Debt_Book.Viewmodels
         public ICommand AddNewDebtorCommand { get; set; }
         public ICommand ViewDebtorInfoCommand { get; set; }
         private readonly DebtDatabase _database;
-        public DebtDatabase Database => _database;
+        private readonly INavigationService _navigationService;
 
-        public MainViewModel(Action navigateToAddDebtorPageAction)
+        public MainViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             _database = new DebtDatabase();
-            AddNewDebtorCommand = new Command(() => navigateToAddDebtorPageAction());
+            AddNewDebtorCommand = new Command(async () => await AddDebtor());
             ViewDebtorInfoCommand = new Command(async () => await ViewDebtorInfo());
             _ = Initialize();
         }
@@ -40,8 +41,19 @@ namespace Debt_Book.Viewmodels
 
         private async Task AddDebtor()
         {
-            await Navigation.PushAsync(new AddDebtorPage(_database));
+            await _navigationService.NavigateToAsync<AddDebtorViewModel>();
         }
+
+        //public void AddDebtor()
+        //{
+        //    var newAddDeptor = new Window(new AddDebtorPage(_database))
+        //    {
+        //        Title = "Add Debtor",
+        //        Width = 800,
+        //        Height = 1000
+        //    };
+        //    Application.Current.OpenWindow(newAddDeptor);
+        //}
 
         private async Task ViewDebtorInfo()
         {

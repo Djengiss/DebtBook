@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Debt_Book.Viewmodels
 {
-    internal class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
