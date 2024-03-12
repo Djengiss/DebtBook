@@ -15,7 +15,7 @@ namespace Debt_Book.Viewmodels
     internal class MainViewModel : ViewModelBase
     {
         public ObservableCollection<Debtor> Debtors { get; set; } = new();
-        //public ICommand AddNewDebtorCommand { get; set; }
+        
         public ICommand ViewDebtorInfoCommand { get; set; }
         private readonly DebtDatabase _database;
         private readonly INavigationService _navigationService;
@@ -25,7 +25,7 @@ namespace Debt_Book.Viewmodels
         {
             _navigationService = navigationService;
             _database = new DebtDatabase();
-            //AddNewDebtorCommand = new Command(async () => await AddDebtor());
+            
             ViewDebtorInfoCommand = new Command(async () => await ViewDebtorInfo());
             _ = Initialize();
         }
@@ -44,13 +44,6 @@ namespace Debt_Book.Viewmodels
         {
             await _navigationService.NavigateToAsync<AddDebtorViewModel>();
         });
-
-
-        //private async Task AddDebtor()
-        //{
-        //    await _navigationService.NavigateToAsync<AddDebtorViewModel>();
-        //}
-
 
         private async Task ViewDebtorInfo()
         {
