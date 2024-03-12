@@ -71,7 +71,7 @@ namespace Debt_Book.Viewmodels
 
                 await _debtDatabase.AddDebt(debt);
 
-                await ClearInput();
+                ClearInput();
 
             }
         }
