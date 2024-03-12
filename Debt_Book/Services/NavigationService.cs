@@ -10,27 +10,38 @@ namespace Debt_Book.Services
 {
     public class NavigationService : INavigationService
     {
-        public Task InitializeAsync() { return Task.CompletedTask; }
+        private readonly Dictionary<Type, Type> _mappings;
+        
+        public NavigationService()
+        {
+            _mappings = new Dictionary<Type, Type>();
+            RegisterRoutes();
+        }
 
-        public async Task NavigateToAsync<TViewModel>(string route, IDictionary<string, object> routeParameters = null) where TViewModel : ViewModelBase { }
-        //{
-        //    if (typeof(TViewModel) == typeof(AddDebtorViewModel))
-        //    {
-        //        await Shell.Current.GoToAsync(nameof(AddDebtorPage));
-        //    }
-        //    else if (typeof(TViewModel) == typeof(DebtorDetailsViewModel))
-        //    {
-        //        await Shell.Current.GoToAsync(nameof(DebtorDetailsPage));
-        //    }
-        //    else if (typeof(TViewModel) == typeof(MainViewModel)) 
-        //    { 
-        //        await Shell.Current.GoToAsync(nameof(MainPage));
-        //    }
-        //}
+        private void RegisterRoutes()
+        {
+            _mappings[typeof(MainViewModel)] = typeof(MainPage);
+            _mappings[typeof(DebtorDetailsViewModel)] = typeof(DebtorDetailsPage);
+            _mappings[typeof(AddDebtorViewModel)] = typeof(AddDebtorPage);
+        }
+
+        public async Task NavigateToAsync<TViewModel>(object parameters = null) where TViewModel : ViewModelBase 
+        {
+            Type pageType = _mappings[typeof(TViewModel)];
+            Page page = (Page)Activator.CreateInstance(pageType);
+            if (page != null)
+            {
+                // Set the BindingContext of the page to the ViewModel.
+                page.BindingContext = Activator.CreateInstance(typeof(TViewModel));
+
+                await Application.Current.MainPage.Navigation.PushAsync(page);
+            }
+        }
+     
 
         public async Task PopAsync()
         {
-            await Shell.Current.GoToAsync("..");
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
     }
 }
