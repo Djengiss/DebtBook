@@ -76,11 +76,11 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-        private Task ClearInput()
+        private void ClearInput()
         {
             Name = string.Empty;
             InitialValue = 0;
-            return Task.CompletedTask;
+            
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
