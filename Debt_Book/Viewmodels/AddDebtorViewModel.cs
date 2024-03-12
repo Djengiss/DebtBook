@@ -44,9 +44,9 @@ namespace Debt_Book.Viewmodels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public AddDebtorViewModel(DebtDatabase debtDatabase)
+        public AddDebtorViewModel()
         {
-            _debtDatabase = debtDatabase;
+            //_debtDatabase = debtDatabase;
             SaveCommand = new Command(async () => await SaveDebt());
             
         }

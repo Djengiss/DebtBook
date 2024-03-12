@@ -5,9 +5,9 @@ namespace Debt_Book.Views;
 
 public partial class AddDebtorPage : ContentPage
 {
-    public AddDebtorPage(DebtDatabase debtDatabase)
+    public AddDebtorPage()
     {
         InitializeComponent();
-        BindingContext = new AddDebtorViewModel(debtDatabase);
+        //BindingContext = new AddDebtorViewModel(debtDatabase);
     }
 }
