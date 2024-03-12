@@ -7,7 +7,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height=".1*"/>
 
@@ -20,20 +20,7 @@
         <!--<BoxView Grid.Row="0"
              Grid.ColumnSpan="2"
              Color="white" />-->
-        <Label Text="Main Page"
-           Grid.ColumnSpan="2"
-           TextColor="Black"
-           FontSize="52"
-           FontAttributes="Bold"
-           HorizontalOptions="Center"
-           HorizontalTextAlignment="Center">
-            <Label.Shadow>
-                <Shadow Brush="Black" 
-            Offset="5,5" 
-            Radius="10" 
-            Opacity="0.8"/>
-            </Label.Shadow>
-        </Label>
+        
 
         <!--<BoxView Grid.Row="1"
            Grid.ColumnSpan="2"
@@ -53,31 +40,49 @@
         <Frame Grid.Row="1"
            Grid.ColumnSpan="1"
            BackgroundColor="Transparent"
+               WidthRequest="550"
            Padding="0"
            HorizontalOptions="Center"
            VerticalOptions="Center"
            HasShadow="False">
-            <CollectionView Grid.Row="2" 
-                            ItemsSource="{Binding Debtors}">
+            <CollectionView Grid.Row="2"
+                ItemsSource="{Binding Debtors}"
+                SelectionMode="Single"
+                            SelectionChangedCommand="{Binding ViewDebtorInfoCommand}"
+                            SelectionChangedCommandParameter="{Binding SelectedItem}"
+                WidthRequest="500"
+                Margin="20" 
+                EmptyView="No debtors to display.">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid WidthRequest="350"
-                              Padding="10"
-                              Margin="0,20"
-                              ColumnDefinitions="2*,5*"
-                              RowDefinitions="Auto,50"
-                              x:Name="DebtorItem">
-                            <Label Text="{Binding DebtorName}"
-                                   FontAttributes="Bold"
-                                   LineBreakMode="WordWrap"
-                                   HorizontalOptions="StartAndExpand"
-                                   FontSize="Large"
-                                   Grid.Row="0"
-                                   Grid.Column="1" />
-                            <Label Text="{Binding AmountDue}"
-                                   Grid.Row="1"
-                                   Grid.Column="1" />
-                        </Grid>
+                        <Frame Padding="10"
+                              
+                            Margin="5"
+                            CornerRadius="10" 
+                            BorderColor="Gray"                         
+                            HasShadow="True">
+                            <Grid ColumnDefinitions="7*,5*"
+                                RowDefinitions="Auto,Auto" 
+                                RowSpacing="1">
+                                <Label Text="{Binding Name}"
+                                        FontAttributes="Bold" 
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="Large"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                       TextColor="White"
+                                        WidthRequest="500"
+                                        HeightRequest="75"/>
+                                <Label Text="{Binding AmountOwed, StringFormat='{0:C}'}" 
+                                    Grid.Row="1"
+                                       WidthRequest="200"
+                                       HeightRequest="75"
+                                Grid.Column="0"
+                                FontSize="Medium"
+                                HorizontalOptions="StartAndExpand"
+                                       TextColor="White"/>
+                            </Grid>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

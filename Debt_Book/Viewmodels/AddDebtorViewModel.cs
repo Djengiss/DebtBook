@@ -60,7 +60,8 @@ namespace Debt_Book.Viewmodels
 
                 var debtor = new Debtor
                 {
-                    Name = Name
+                    Name = Name,
+                    AmountOwed = InitialValue
                 };
 
                 await _debtDatabase.AddDebtor(debtor);
@@ -72,9 +73,10 @@ namespace Debt_Book.Viewmodels
                 };
 
                 await _debtDatabase.AddDebt(debt);
+                MessagingCenter.Send(this, "NewDebtorAdded", debtor);
 
                 ClearInputFields();
-
+                await _navigationService.PopAsync();
             }
         }
 

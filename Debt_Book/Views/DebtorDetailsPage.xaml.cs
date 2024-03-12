@@ -8,6 +8,6 @@ public partial class DebtorDetailsPage : ContentPage
 	public DebtorDetailsPage()
 	{
 		InitializeComponent();
-        BindingContext = new DebtorDetailsViewModel();
+       
     }
 }

@@ -31,7 +31,7 @@ namespace Debt_Book.Services
             Page page = (Page)Activator.CreateInstance(pageType);
             if (page != null)
             {
-                // Set the BindingContext of the page to the ViewModel.
+                
                 page.BindingContext = viewModel;
 
                 await Application.Current.MainPage.Navigation.PushAsync(page);
