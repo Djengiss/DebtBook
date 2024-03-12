@@ -12,7 +12,7 @@ using Debt_Book.Services;
 
 namespace Debt_Book.Viewmodels
 {
-    internal class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         public ObservableCollection<Debtor> Debtors { get; set; } = new();
         public ICommand AddNewDebtorCommand { get; set; }

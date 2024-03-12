@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Debt_Book.Services;
 using Debt_Book.Viewmodels;
+using Debt_Book.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
@@ -23,8 +24,11 @@ namespace Debt_Book
                 });
             builder.Services.AddSingleton<INavigationService, NavigationService>();
             builder.Services.AddTransient<MainViewModel>();
+            builder.Services.AddSingleton<MainPage>();
             builder.Services.AddTransient<AddDebtorViewModel>();
+            builder.Services.AddSingleton<AddDebtorPage>();
             builder.Services.AddTransient<DebtorDetailsViewModel>();
+            builder.Services.AddSingleton<DebtorDetailsPage>();
 
             return builder.Build();
         }
