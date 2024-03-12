@@ -44,17 +44,6 @@ namespace Debt_Book.Viewmodels
             await _navigationService.NavigateToAsync<AddDebtorViewModel>();
         }
 
-        //public void AddDebtor()
-        //{
-        //    var newAddDeptor = new Window(new AddDebtorPage(_database))
-        //    {
-        //        Title = "Add Debtor",
-        //        Width = 800,
-        //        Height = 1000
-        //    };
-        //    Application.Current.OpenWindow(newAddDeptor);
-        //}
-
         private async Task ViewDebtorInfo()
         {
             await Navigation.PushAsync(new DebtorDetailsPage());

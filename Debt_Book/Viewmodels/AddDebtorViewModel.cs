@@ -40,7 +40,7 @@ namespace Debt_Book.Viewmodels
         private readonly DebtDatabase _debtDatabase;
 
         public ICommand SaveCommand { get; set; }
-        public ICommand CancelCommand { get; set;}
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -48,7 +48,7 @@ namespace Debt_Book.Viewmodels
         {
             _debtDatabase = debtDatabase;
             SaveCommand = new Command(async () => await SaveDebt());
-            CancelCommand = new Command(async () => await ClearInput());
+            
         }
 
         private async Task SaveDebt()

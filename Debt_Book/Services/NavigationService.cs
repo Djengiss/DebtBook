@@ -11,7 +11,7 @@ namespace Debt_Book.Services
     public class NavigationService : INavigationService
     {
 
-        public async Task NavigationToAsync<TViewModel>() where TViewModel : ViewModelBase
+        public async Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase
         {
             if (typeof(TViewModel) == typeof(AddDebtorViewModel))
             {
@@ -27,7 +27,7 @@ namespace Debt_Book.Services
             }
         }
 
-        public async Task NavigationBackAsync()
+        public async Task NavigateBackAsync()
         {
             await Shell.Current.GoToAsync("..");
         }
