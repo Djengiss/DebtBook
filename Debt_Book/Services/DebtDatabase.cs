@@ -46,6 +46,7 @@ namespace Debt_Book.Services
             return await _connection.Table<Debtor>().ToListAsync();
         }
 
+        // Should Return a list right??? 
         public async Task<Debt> GetDebt(int id)
         {
             var query = _connection.Table<Debt>().Where(t => t.DebtorId == id);

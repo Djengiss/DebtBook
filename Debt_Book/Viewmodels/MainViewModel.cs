@@ -23,7 +23,7 @@ namespace Debt_Book.Viewmodels
         {
             _database = new DebtDatabase();
             AddNewDebtorCommand = new Command(async () => await AddDebtor());
-            ViewDebtorInfoCommand = new Command(async () => await ViewDebtorInfo());
+            //ViewDebtorInfoCommand = new Command(async () => await ViewDebtorInfo());
             _ = Initialize();
         }
 
@@ -44,7 +44,9 @@ namespace Debt_Book.Viewmodels
 
         private async Task ViewDebtorInfo()
         {
-            await Navigation.PushAsync(new DebtorDetailsPage());
+            // Need to pass the debtor to the function DebtorDetailsPage(Debtor selectedDebtor)
+            // So we also need a selectDebtor method
+            // await Navigation.PushAsync(new DebtorDetailsPage()); 
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -43,7 +43,6 @@
                    />
         </Frame>
 
-        
         <Label
             Text="Initial Value"
             Grid.Row="1"
@@ -52,28 +51,7 @@
             VerticalOptions="End"
             Margin="0,0,0,30"
             />
-
-        <Frame Grid.Row="2"
-               Grid.ColumnSpan="2"
-               BackgroundColor="Transparent"
-               Padding="0"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               HasShadow="False">
-            <Entry Grid.Row="2"
-                   Text="{Binding InitialValue, StringFormat='{0:N2}'}"
-                   Keyboard="Numeric"
-                   x:Name="valueEntry"
-                   Grid.ColumnSpan="2"
-                   Margin="0,0,0,0"
-                   Placeholder="Initial Value"
-                   FontSize="48"
-                   WidthRequest="400"
-                   />
-        </Frame>
-
-
-        
+   
         <Button Grid.Row="3"
                 x:Name="SaveBtn"
                 Command="{Binding SaveCommand}"
