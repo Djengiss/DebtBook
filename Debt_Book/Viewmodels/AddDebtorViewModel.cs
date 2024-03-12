@@ -48,7 +48,7 @@ namespace Debt_Book.Viewmodels
         {
             _debtDatabase = debtDatabase;
             SaveCommand = new Command(async () => await SaveDebt());
-            CancelCommand = new Command(async () => await Cancel());
+            CancelCommand = new Command(async () => await ClearInput());
         }
 
         private async Task SaveDebt()
@@ -76,15 +76,11 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-        private void ClearInput()
+        private Task ClearInput()
         {
             Name = string.Empty;
             InitialValue = 0;
-        }
-
-        private async Task Cancel()
-        {
-            await Navigation.PopAsync();
+            return Task.CompletedTask;
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
