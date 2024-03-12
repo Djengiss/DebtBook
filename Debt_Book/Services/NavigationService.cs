@@ -10,8 +10,9 @@ namespace Debt_Book.Services
 {
     public class NavigationService : INavigationService
     {
+        public Task InitializeAsync() { return Task.CompletedTask; }
 
-        public async Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase
+        public async Task NavigateToAsync<TViewModel>(string route, IDictionary<string, object> routeParameters = null) where TViewModel : ViewModelBase
         {
             if (typeof(TViewModel) == typeof(AddDebtorViewModel))
             {
@@ -27,7 +28,7 @@ namespace Debt_Book.Services
             }
         }
 
-        public async Task NavigateBackAsync()
+        public async Task PopAsync()
         {
             await Shell.Current.GoToAsync("..");
         }

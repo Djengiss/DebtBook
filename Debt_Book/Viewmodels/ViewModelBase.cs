@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Debt_Book.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -34,5 +35,6 @@ namespace Debt_Book.Viewmodels
         #region INavigation
         public INavigation Navigation { get; set; }
         #endregion
+        INavigationService NavigationService { get; set; }
     }
 }

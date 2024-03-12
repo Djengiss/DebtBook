@@ -5,11 +5,11 @@ namespace Debt_Book
 {
     public partial class App : Application
     {
-        public App(IServiceProvider serviceProvider)
+        public App()
         {
             InitializeComponent();
 
-            MainPage = serviceProvider.GetService<MainPage>();
+            MainPage = new MainPage();
         }
     }
 }
