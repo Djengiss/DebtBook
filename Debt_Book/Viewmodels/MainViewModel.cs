@@ -23,7 +23,7 @@ namespace Debt_Book.Viewmodels
         {
             _database = new DebtDatabase();
             AddNewDebtorCommand = new Command(async () => await AddDebtor());
-            ViewDebtorInfoCommand = new Command(async () => await ViewDebtorInfo());
+            ViewDebtorInfoCommand = new Command(async () => await Navigation.PushAsync(new DebtorDetailsPage()));
             _ = Initialize();
         }
 
@@ -51,11 +51,6 @@ namespace Debt_Book.Viewmodels
             await Navigation.PushAsync(new AddDebtorPage(_database));
 
             }
-        }
-
-        private async Task ViewDebtorInfo()
-        {
-            await Navigation.PushAsync(new DebtorDetailsPage());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
