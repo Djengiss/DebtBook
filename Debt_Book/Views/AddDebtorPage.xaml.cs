@@ -1,13 +1,13 @@
+using Debt_Book.Services;
 using Debt_Book.Viewmodels;
 
 namespace Debt_Book.Views;
 
 public partial class AddDebtorPage : ContentPage
 {
-	public AddDebtorPage()
-	{
-		InitializeComponent();
-		BindingContext = new AddDebtorViewModel();
-	}
-
+    public AddDebtorPage(DebtDatabase debtDatabase)
+    {
+        InitializeComponent();
+        BindingContext = new AddDebtorViewModel(debtDatabase);
+    }
 }

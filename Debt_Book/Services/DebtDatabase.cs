@@ -11,7 +11,7 @@ using Debt_Book.Models;
 // Provides methods for adding, retrieving, and manipulating debtor and debt data in the database.
 namespace Debt_Book.Services
 {
-    internal class DebtDatabase
+    public class DebtDatabase
     {
         private readonly SQLiteAsyncConnection _connection;
 

@@ -29,6 +29,7 @@ namespace Debt_Book.Viewmodels
 
         private async Task Initialize()
         {
+            
             var debtors = await _database.GetDebtors();
 
             foreach(var debtor in debtors)
@@ -39,7 +40,17 @@ namespace Debt_Book.Viewmodels
 
         private async Task AddDebtor()
         {
-            await Navigation.PushAsync(new AddDebtorPage());
+
+            if(_database == null)
+            {
+                System.Diagnostics.Debug.WriteLine("Error database is null!");
+            }
+            else
+            {
+
+            await Navigation.PushAsync(new AddDebtorPage(_database));
+
+            }
         }
 
         private async Task ViewDebtorInfo()

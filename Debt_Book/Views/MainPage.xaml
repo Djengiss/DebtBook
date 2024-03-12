@@ -17,9 +17,9 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <BoxView Grid.Row="0"
+        <!--<BoxView Grid.Row="0"
              Grid.ColumnSpan="2"
-             Color="white" />
+             Color="white" />-->
         <Label Text="Main Page"
            Grid.ColumnSpan="2"
            TextColor="Black"
@@ -35,9 +35,9 @@
             </Label.Shadow>
         </Label>
 
-        <BoxView Grid.Row="1"
+        <!--<BoxView Grid.Row="1"
            Grid.ColumnSpan="2"
-           Color="white" />
+           Color="white" />-->
         <Button Grid.Row="1"
                 Grid.ColumnSpan="1"
                 Grid.Column="1"
@@ -96,14 +96,14 @@
         </Frame>
         
 
-        <BoxView Grid.Row="2"
+        <!--<BoxView Grid.Row="2"
            Grid.ColumnSpan="2"
            Color="white" />
 
 
         <BoxView Grid.Row="3"
             Grid.ColumnSpan="2"
-            Color="white" />
+            Color="white" />-->
         
     </Grid>
 
