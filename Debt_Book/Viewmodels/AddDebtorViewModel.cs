@@ -39,7 +39,7 @@ namespace Debt_Book.Viewmodels
 
         private readonly DebtDatabase _debtDatabase;
 
-        public ICommand SaveDebtCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; set;}
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -47,8 +47,8 @@ namespace Debt_Book.Viewmodels
         public AddDebtorViewModel(DebtDatabase debtDatabase)
         {
             _debtDatabase = debtDatabase;
-            SaveDebtCommand = new Command(async () => await SaveDebt());
-            CancelCommand = new Command(async () => await Cancel());
+            SaveCommand = new Command(async () => await SaveDebt());
+            CancelCommand = new Command(async () => await ClearInput());
         }
 
         private async Task SaveDebt()
@@ -76,15 +76,11 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-        private void ClearInput()
+        private Task ClearInput()
         {
             Name = string.Empty;
             InitialValue = 0;
-        }
-
-        private async Task Cancel()
-        {
-            await Navigation.PopAsync();
+            return Task.CompletedTask;
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
