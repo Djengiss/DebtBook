@@ -12,7 +12,7 @@ using Debt_Book.Services;
 
 namespace Debt_Book.Viewmodels
 {
-    public class MainViewModel : ViewModelBase
+    internal class MainViewModel : ViewModelBase
     {
         public ObservableCollection<Debtor> Debtors { get; set; } = new();
         public ICommand AddNewDebtorCommand { get; set; }
@@ -41,8 +41,19 @@ namespace Debt_Book.Viewmodels
 
         private async Task AddDebtor()
         {
-            _navigationService.NavigateToAsync<AddDebtorPage>();
+            await _navigationService.NavigateToAsync<AddDebtorViewModel>();
         }
+
+        //public void AddDebtor()
+        //{
+        //    var newAddDeptor = new Window(new AddDebtorPage(_database))
+        //    {
+        //        Title = "Add Debtor",
+        //        Width = 800,
+        //        Height = 1000
+        //    };
+        //    Application.Current.OpenWindow(newAddDeptor);
+        //}
 
         private async Task ViewDebtorInfo()
         {
