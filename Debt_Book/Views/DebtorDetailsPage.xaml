@@ -98,6 +98,7 @@
                Padding="0"
                HorizontalOptions="Center">
             <Entry Placeholder="Enter Amount"
+                   Keyboard="Numeric"
                    MinimumWidthRequest="195"
                    HorizontalOptions="Center"
                    FontSize="Large"
