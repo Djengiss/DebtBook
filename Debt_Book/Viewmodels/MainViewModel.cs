@@ -30,7 +30,6 @@ namespace Debt_Book.Viewmodels
 
         private async Task Initialize()
         {
-            Debtors.Clear();
             var debtors = await _database.GetDebtors();
 
             foreach (var debtor in debtors)
