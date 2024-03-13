@@ -123,6 +123,7 @@ namespace Debt_Book.Viewmodels
                     newDebt.Id = rowsAffected;
                     Debts.Add(newDebt);
                 }
+                CurrentDebtor.AmountOwed = await _database.GetTotalDebtForDebtor(CurrentDebtor.Id);
                 _debtModifiedCallback?.Invoke(CurrentDebtor);
             }
             else
@@ -147,6 +148,7 @@ namespace Debt_Book.Viewmodels
                     newDebt.Id = rowsAffected;
                     Debts.Add(newDebt);
                 }
+                CurrentDebtor.AmountOwed = await _database.GetTotalDebtForDebtor(CurrentDebtor.Id);
                 _debtModifiedCallback?.Invoke(CurrentDebtor);
             }
             else
