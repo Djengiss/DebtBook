@@ -30,6 +30,12 @@ namespace Debt_Book.Viewmodels
 
         private async Task Initialize()
         {
+            await LoadDebtors();
+        }
+
+        private async Task LoadDebtors()
+        {
+            Debtors.Clear();
             var debtors = await _database.GetDebtors();
 
             foreach (var debtor in debtors)
@@ -52,7 +58,7 @@ namespace Debt_Book.Viewmodels
 
         private async void DebtModifiedCallback(Debtor debtor)
         {
-            debtor.AmountOwed = await _database.GetTotalDebtForDebtor(debtor.Id);
+            await LoadDebtors();
         }
 
         private async Task ViewDebtorInfo(Debtor selectedDebtor)
