@@ -10,6 +10,7 @@ using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+
 // Responsible for providing data and logic for the DebtorDetailsPage.xaml.
 // Handles interactions and data binding for the debtor details page.
 namespace Debt_Book.Viewmodels
