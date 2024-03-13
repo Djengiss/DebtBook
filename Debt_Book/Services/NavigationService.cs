@@ -1,10 +1,5 @@
 ﻿using Debt_Book.Viewmodels;
 using Debt_Book.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Debt_Book.Services
 {

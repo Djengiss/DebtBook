@@ -1,12 +1,6 @@
 ﻿using Debt_Book.Models;
 using Debt_Book.Services;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 // Responsible for providing data and logic for the AddDebtorPage.xaml.

@@ -2,9 +2,6 @@
 using Debt_Book.Services;
 using Debt_Book.Viewmodels;
 using Debt_Book.Views;
-using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Handlers;
-using Microsoft.Maui.Platform;
 
 namespace Debt_Book
 {
