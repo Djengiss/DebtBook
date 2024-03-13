@@ -16,8 +16,15 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        
-    
+
+        <Image
+            Grid.RowSpan="4"
+            Grid.ColumnSpan="2"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            Source="peaky.jpg"
+            VerticalOptions="FillAndExpand"
+            Opacity="0.2"/>
         <Label
             Text="Name"
             Grid.Row="0"
@@ -61,9 +68,7 @@
                HasShadow="False">
             <Entry Grid.Row="2"
                    Text="{Binding InitialValue, StringFormat='{0:N2}', Mode=TwoWay}"
-                   Keyboard="Numeric"
                    Grid.ColumnSpan="2"
-                   Placeholder="Initial Value"
                    FontSize="48"
                    />
         </Frame>
