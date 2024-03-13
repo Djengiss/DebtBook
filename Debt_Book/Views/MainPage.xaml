@@ -20,7 +20,7 @@
         <!--<BoxView Grid.Row="0"
              Grid.ColumnSpan="2"
              Color="white" />-->
-        
+
 
         <!--<BoxView Grid.Row="1"
            Grid.ColumnSpan="2"
@@ -36,7 +36,7 @@
                 VerticalOptions="Start" 
                 Command="{Binding AddNewDebtorCommand}"
                 />
-        
+
         <Frame Grid.Row="1"
            Grid.ColumnSpan="1"
            BackgroundColor="Transparent"
@@ -47,12 +47,12 @@
            HasShadow="False">
             <CollectionView Grid.Row="2"
                 ItemsSource="{Binding Debtors}"
-                SelectionMode="Single"
+                            SelectionMode="Single"
                             SelectionChangedCommand="{Binding ViewDebtorInfoCommand}"
                             SelectionChangedCommandParameter="{Binding SelectedItem}"
-                WidthRequest="500"
-                Margin="20" 
-                EmptyView="No debtors to display.">
+                            WidthRequest="500"
+                            Margin="20" 
+                            EmptyView="No debtors to display.">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10"
@@ -86,33 +86,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <!--<Entry Grid.Row="2"
-                
-               Text="ValueEntry"
-               Keyboard="Numeric"
-               x:Name="valueEntry"
-               Grid.ColumnSpan="2"
-               Placeholder="Initial Value"
-               FontSize="48"
-               WidthRequest="500"
-                   HeightRequest="500"
-               TextColor="Black"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />-->
         </Frame>
-
-
-        <!--<BoxView Grid.Row="2"
-           Grid.ColumnSpan="2"
-           Color="white" />
-
-
-        <BoxView Grid.Row="3"
-            Grid.ColumnSpan="2"
-            Color="white" />-->
-
-
     </Grid>
-
-
 </ContentPage>

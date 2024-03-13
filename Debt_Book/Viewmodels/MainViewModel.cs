@@ -31,7 +31,7 @@ namespace Debt_Book.Viewmodels
                 Debtors.Add(newDebtor);
             });
             
-            ViewDebtorInfoCommand = new Command<Debtor>(async (debtor) => await ViewDebtorInfo(debtor));
+            ViewDebtorInfoCommand = new Command<Debtor>(async (selecteddebtor) => await ViewDebtorInfo(selecteddebtor));
             _ = Initialize();
         }
         private async Task Initialize()
@@ -53,8 +53,11 @@ namespace Debt_Book.Viewmodels
 
         private async Task ViewDebtorInfo(Debtor selectedDebtor)
         {
-            var debtorDetailsViewModel = new DebtorDetailsViewModel(_navigationService, selectedDebtor);
-            await _navigationService.NavigateToAsync(debtorDetailsViewModel);
+            if (selectedDebtor == null)
+            {
+                var debtorDetailsViewModel = new DebtorDetailsViewModel(_navigationService, selectedDebtor);
+                await _navigationService.NavigateToAsync(debtorDetailsViewModel);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
