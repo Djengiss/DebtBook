@@ -157,7 +157,6 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-
         private async Task Return()
         {
             await NavigationService.PopAsync();
