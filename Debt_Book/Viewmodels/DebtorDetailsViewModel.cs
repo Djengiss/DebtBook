@@ -184,8 +184,8 @@ namespace Debt_Book.Viewmodels
             Debts = new ObservableCollection<Debt>(await GetDebts());
         }
 
-        //new public event PropertyChangedEventHandler PropertyChanged;
-        //new protected virtual void OnPropertyChanged(string propertyName)
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected virtual void OnPropertyChanged(string propertyName)
         //{
         //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         //}
