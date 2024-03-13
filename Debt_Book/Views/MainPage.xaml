@@ -28,9 +28,6 @@
         <Button Grid.Row="1"
                 Grid.ColumnSpan="1"
                 Grid.Column="1"
-                x:Name="AddBtn"
-                HeightRequest="75"
-                WidthRequest="200"
                 Text="Add"
                 HorizontalOptions="Center"
                 VerticalOptions="Start" 
@@ -53,11 +50,15 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10"
-                             HeightRequest="50" 
-                            Margin="5"
-                            CornerRadius="10" 
-                            BorderColor="Gray"                         
-                            HasShadow="True">
+                               Grid.RowSpan="2"
+                                HeightRequest="50" 
+                                Margin="5"
+                                CornerRadius="10" 
+                                BorderColor="Gray"  
+                               MinimumWidthRequest="380"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                                HasShadow="True">
                             <Grid ColumnDefinitions="7*,5*"
                                 RowDefinitions="Auto,Auto" 
                                 RowSpacing="1">
@@ -67,17 +68,13 @@
                                         FontSize="Medium"
                                         Grid.Row="0"
                                         Grid.Column="0"
-                                       TextColor="White"
-                                        
-                                        HeightRequest="75"/>
+                                        />
                                 <Label Text="{Binding AmountOwed, StringFormat='{0:C}'}" 
-                                    Grid.Row="0"
-                                       WidthRequest="200"
-                                       HeightRequest="75"
-                                Grid.Column="1"
-                                FontSize="Small"
-                                HorizontalOptions="StartAndExpand"
-                                       TextColor="White"/>
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="Small"
+                                        HorizontalOptions="StartAndExpand"
+                                         />
                             </Grid>
                         </Frame>
                     </DataTemplate>

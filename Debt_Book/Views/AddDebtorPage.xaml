@@ -38,7 +38,6 @@
             <Entry Placeholder="Name"
                    Text="{Binding Name, Mode=TwoWay}"
                    x:Name="nameEntry"
-                   WidthRequest="400"
                    FontSize="48"
                    />
         </Frame>
@@ -66,7 +65,6 @@
                    Grid.ColumnSpan="2"
                    Placeholder="Initial Value"
                    FontSize="48"
-                   WidthRequest="400"
                    />
         </Frame>
 
@@ -75,32 +73,25 @@
         <Button Grid.Row="3"
                 
                 Command="{Binding AddDebtCommand}"
-                BackgroundColor="red"
-                HeightRequest="75"
-                WidthRequest="200"
+                BackgroundColor="{StaticResource ButtonRed}"
                 Grid.ColumnSpan="1"
                 Text="Add Debt"
                 HorizontalOptions="Center"
                 VerticalOptions="Center" 
                 />
-        <Button Grid.Row="2"
+        <Button Grid.Row="3"
                 
                 Command="{Binding AddCreditCommand}"
-                BackgroundColor="Green"
-                HeightRequest="75"
-                WidthRequest="200"
-                Grid.ColumnSpan="1"
+                Grid.ColumnSpan="2"
                 Text="Add Credit"
                 HorizontalOptions="Center"
                 VerticalOptions="Center" 
                 />
         <Button Grid.Row="3"
                 Command="{Binding CancelCommand}"
-                BackgroundColor="red"
-                HeightRequest="75"
-                WidthRequest="200"
+                BackgroundColor="{StaticResource ButtonReturn}"
                 Grid.Column="1"
-                Text="Cancel"
+                Text="Return"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 />
