@@ -32,9 +32,9 @@ namespace Debt_Book.Viewmodels
             }
         }
         #endregion
-        #region INavigation
-        public INavigation Navigation { get; set; }
-        #endregion
+
+        #region INavigationService
         public INavigationService NavigationService { get; set; }
+        #endregion
     }
 }
