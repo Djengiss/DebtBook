@@ -125,6 +125,7 @@ namespace Debt_Book.Viewmodels
                 }
                 CurrentDebtor.AmountOwed = await _database.GetTotalDebtForDebtor(CurrentDebtor.Id);
                 _debtModifiedCallback?.Invoke(CurrentDebtor);
+                Value = 0;
             }
             else
             {
@@ -150,6 +151,7 @@ namespace Debt_Book.Viewmodels
                 }
                 CurrentDebtor.AmountOwed = await _database.GetTotalDebtForDebtor(CurrentDebtor.Id);
                 _debtModifiedCallback?.Invoke(CurrentDebtor);
+                Value = 0;
             }
             else
             {
