@@ -18,58 +18,53 @@
         </Grid.ColumnDefinitions>
 
 
-        <Image
-            Grid.RowSpan="6"
-            Grid.ColumnSpan="2"
-            Aspect="AspectFill"
-            HorizontalOptions="FillAndExpand"
-            Source="peaky.jpg"
-            VerticalOptions="FillAndExpand"
-            Opacity="0.2"/>
+        <Image Grid.RowSpan="6"
+               Grid.ColumnSpan="2"
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               Source="peaky.jpg"
+               VerticalOptions="FillAndExpand"
+               Opacity="0.2"/>
         <!--Name of Current Debtor-->
         <Label Grid.Row="1"
                Text="{Binding CurrentPersonName}"
                HorizontalOptions="Center"
                FontSize="32"
                TextColor="black"/>
-
-
         <Frame Grid.Row="2"
-           Grid.ColumnSpan="1"
+               Grid.ColumnSpan="1"
                Grid.RowSpan="2"
-           BackgroundColor="Transparent"
-           Padding="0"
-           HorizontalOptions="Center"
-           VerticalOptions="Start"
-           HasShadow="False">
+               BackgroundColor="Transparent"
+               Padding="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               HasShadow="False">
             <CollectionView Grid.Row="2"
-                ItemsSource="{Binding Debts}"
-                Margin="20" 
-                EmptyView="No debt to display.">
+                            ItemsSource="{Binding Debts}"
+                            Margin="20" 
+                            EmptyView="No debt to display.">
                  <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10"
                                HeightRequest="50"
-                                Margin="5"
-                                CornerRadius="10" 
-                                BorderColor="Gray"                         
-                                HasShadow="True">
-                              <Grid ColumnDefinitions="7*,5*"
-                                RowDefinitions="Auto,Auto" 
-                                RowSpacing="1">
+                               Margin="5"
+                               CornerRadius="10" 
+                               BorderColor="Gray"                         
+                               HasShadow="True">
+                            <Grid ColumnDefinitions="7*,5*"
+                                  RowDefinitions="Auto,Auto" 
+                                  RowSpacing="1">
                                 <Label Text="{Binding Amount, StringFormat='{0:C}'}"
-                                        FontAttributes="Bold" 
-                                        HorizontalOptions="StartAndExpand"
-                                        FontSize="Small"
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                       />
-                                    <Label Text="{Binding Date}" 
-                                    Grid.Row="0"
-                                Grid.Column="1"
-                                FontSize="Small"
-                                HorizontalOptions="StartAndExpand"
-                                       />
+                                       FontAttributes="Bold" 
+                                       HorizontalOptions="StartAndExpand"
+                                       FontSize="Small"
+                                       Grid.Row="0"
+                                       Grid.Column="0" />
+                                <Label Text="{Binding Date}" 
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       FontSize="Small"
+                                       HorizontalOptions="StartAndExpand" />
                               </Grid>
                             </Frame>
                         </DataTemplate>

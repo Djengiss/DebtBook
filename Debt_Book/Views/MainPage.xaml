@@ -16,15 +16,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
-        <!--<BoxView Grid.Row="0"
-             Grid.ColumnSpan="2"
-             Color="white" />-->
-
-
-        <!--<BoxView Grid.Row="1"
-           Grid.ColumnSpan="2"
-           Color="white" />-->
+        
         <Image
             Grid.RowSpan="3"
             Grid.ColumnSpan="2"
@@ -32,57 +24,54 @@
             HorizontalOptions="FillAndExpand"
             Source="peaky.jpg"
             VerticalOptions="FillAndExpand"
-            Opacity="0.2"/>
+            Opacity="0.2" />
         <Button Grid.Row="1"
                 Grid.ColumnSpan="1"
                 Grid.Column="1"
                 Text="Add"
                 HorizontalOptions="Center"
                 VerticalOptions="Start" 
-                Command="{Binding AddNewDebtorCommand}"
-                />
+                Command="{Binding AddNewDebtorCommand}" />
 
         <Frame Grid.Row="1"
-           Grid.ColumnSpan="1"
-           BackgroundColor="Transparent"     
-           Padding="0"
-           HorizontalOptions="Center"
-           VerticalOptions="Center"
-           HasShadow="False">
+               Grid.ColumnSpan="1"
+               BackgroundColor="Transparent"     
+               Padding="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               HasShadow="False">
             <CollectionView Grid.Row="2"
-                ItemsSource="{Binding Debtors}"
+                            ItemsSource="{Binding Debtors}"
                             SelectionMode="Single"
                             SelectedItem="{Binding SelectedDebtor, Mode=TwoWay}"
                             Margin="20" 
-                            EmptyView="No debtors to display.">
+                            EmptyView="No debtors to display." >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10"
                                Grid.RowSpan="2"
-                                HeightRequest="50" 
-                                Margin="5"
-                                CornerRadius="10" 
-                                BorderColor="Gray"  
+                               HeightRequest="50" 
+                               Margin="5"
+                               CornerRadius="10" 
+                               BorderColor="Gray"  
                                MinimumWidthRequest="380"
                                HorizontalOptions="CenterAndExpand"
                                VerticalOptions="CenterAndExpand"
-                                HasShadow="True">
+                               HasShadow="True">
                             <Grid ColumnDefinitions="7*,5*"
-                                RowDefinitions="Auto,Auto" 
-                                RowSpacing="1">
+                                  RowDefinitions="Auto,Auto" 
+                                  RowSpacing="1">
                                 <Label Text="{Binding Name}"
-                                        FontAttributes="Bold" 
-                                        HorizontalOptions="StartAndExpand"
-                                        FontSize="Medium"
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        />
+                                       FontAttributes="Bold" 
+                                       HorizontalOptions="StartAndExpand"
+                                       FontSize="Medium"
+                                       Grid.Row="0"
+                                       Grid.Column="0" />
                                 <Label Text="{Binding AmountOwed, StringFormat='{0:C}'}" 
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        FontSize="Small"
-                                        HorizontalOptions="StartAndExpand"
-                                         />
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       FontSize="Small"
+                                       HorizontalOptions="StartAndExpand" />
                             </Grid>
                         </Frame>
                     </DataTemplate>

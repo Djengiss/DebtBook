@@ -24,7 +24,6 @@ namespace Debt_Book.Viewmodels
                 _name = value;
                 OnPropertyChanged(nameof(Name));
             }
-
         }
 
         private double _initialValue;
@@ -55,7 +54,6 @@ namespace Debt_Book.Viewmodels
             AddCreditCommand = new Command(async () => await AddCredit());
             AddDebtCommand = new Command(async () => await AddDebt());
             CancelCommand = new Command(async () => await CancelAndNavigateBack());
-
         }
 
         private async Task AddDebt()
@@ -75,7 +73,6 @@ namespace Debt_Book.Viewmodels
                     Amount = -InitialValue,
                     Date = DateTime.Now.ToString("yyyy-MM-dd"),
                     DebtorId = debtor.Id
-                    
                 };
 
                 await _debtDatabase.AddDebt(newDebt);
@@ -108,7 +105,6 @@ namespace Debt_Book.Viewmodels
                     Amount = InitialValue,
                     Date = DateTime.Now.ToString("yyyy-MM-dd"),
                     DebtorId = debtor.Id
-
                 };
 
                 await _debtDatabase.AddDebt(newDebt);

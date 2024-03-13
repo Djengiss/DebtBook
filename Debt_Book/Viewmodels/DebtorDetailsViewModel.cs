@@ -100,9 +100,8 @@ namespace Debt_Book.Viewmodels
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in DebtorDetailsViewModel constructor");
+                Console.WriteLine($"Error in DebtorDetailsViewModel constructor {ex}");
             }
-
         }
 
         private async Task AddDebt()
@@ -115,7 +114,7 @@ namespace Debt_Book.Viewmodels
                 {
                     Amount = -Value,
                     Date = DateTime.Now.ToString("yyyy-MM-dd"),
-                    DebtorId = _currentDebtor.Id,
+                    DebtorId = _currentDebtor.Id
                 };
                 int rowsAffected = await _database.AddDebt(newDebt);
                 if (rowsAffected > 0)
@@ -141,7 +140,7 @@ namespace Debt_Book.Viewmodels
                 {
                     Amount = Value,
                     Date = DateTime.Now.ToString("yyyy-MM-dd"),
-                    DebtorId = _currentDebtor.Id,
+                    DebtorId = _currentDebtor.Id
                 };
                 int rowsAffected = await _database.AddDebt(newDebt);
                 if (rowsAffected > 0)
@@ -186,12 +185,5 @@ namespace Debt_Book.Viewmodels
         {
             Debts = new ObservableCollection<Debt>(await GetDebts());
         }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected virtual void OnPropertyChanged(string propertyName)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
     }
 }

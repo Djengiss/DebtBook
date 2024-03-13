@@ -24,14 +24,13 @@
             HorizontalOptions="FillAndExpand"
             Source="peaky.jpg"
             VerticalOptions="FillAndExpand"
-            Opacity="0.2"/>
+            Opacity="0.2" />
         <Label
             Text="Name"
             Grid.Row="0"
             HorizontalOptions="Center"
             Grid.ColumnSpan="2"
-            Margin="0,20,0,0"
-            />
+            Margin="0,20,0,0" />
 
         
         <Frame Grid.Row="1"
@@ -45,8 +44,7 @@
             <Entry Placeholder="Name"
                    Text="{Binding Name, Mode=TwoWay}"
                    x:Name="nameEntry"
-                   FontSize="48"
-                   />
+                   FontSize="48" />
         </Frame>
 
         
@@ -56,8 +54,7 @@
             HorizontalOptions="Center"
             Grid.ColumnSpan="2"
             VerticalOptions="End"
-            Margin="0,0,0,30"
-            />
+            Margin="0,0,0,30" />
 
         <Frame Grid.Row="2"
                Grid.ColumnSpan="2"
@@ -69,36 +66,30 @@
             <Entry Grid.Row="2"
                    Text="{Binding InitialValue, StringFormat='{0:N2}', Mode=TwoWay}"
                    Grid.ColumnSpan="2"
-                   FontSize="48"
-                   />
+                   FontSize="48" />
         </Frame>
 
 
         
         <Button Grid.Row="3"
-                
                 Command="{Binding AddDebtCommand}"
                 BackgroundColor="{StaticResource ButtonRed}"
                 Grid.ColumnSpan="1"
                 Text="Add Debt"
                 HorizontalOptions="Center"
-                VerticalOptions="Center" 
-                />
+                VerticalOptions="Center" />
         <Button Grid.Row="3"
-                
                 Command="{Binding AddCreditCommand}"
                 Grid.ColumnSpan="2"
                 Text="Add Credit"
                 HorizontalOptions="Center"
-                VerticalOptions="Center" 
-                />
+                VerticalOptions="Center" />
         <Button Grid.Row="3"
                 Command="{Binding CancelCommand}"
                 BackgroundColor="{StaticResource ButtonReturn}"
                 Grid.Column="1"
                 Text="Return"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"
-                />
+                VerticalOptions="Center" />
     </Grid>
 </ContentPage>

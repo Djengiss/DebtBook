@@ -85,7 +85,6 @@ namespace Debt_Book.Viewmodels
                 {
                     _selectedDebtor = value;
                     OnPropertyChanged(nameof(SelectedDebtor));
-                    // Call the command manually or handle navigation here if you want
                     ViewDebtorInfoCommand.Execute(_selectedDebtor);
                 }
             }
