@@ -80,7 +80,6 @@ namespace Debt_Book.Viewmodels
         {
             NavigationService = navigationService;
             _currentDebtor = selectedDebtor;
-            _Amount = selectedDebtor.AmountOwed;
             _database = new DebtDatabase();
             
 
@@ -96,7 +95,6 @@ namespace Debt_Book.Viewmodels
                 AddDebtCommand = new Command(async () => await AddDebt());
                 AddCreditCommand = new Command(async () => await AddCredit());
                 CurrentPersonName = CurrentDebtor.Name;
-                Amount = CurrentDebtor.AmountOwed;
                 _ = LoadDebtsForCurrentDebtor();
             }
             catch (Exception ex)
@@ -123,7 +121,6 @@ namespace Debt_Book.Viewmodels
                 {
                     newDebt.Id = rowsAffected;
                     Debts.Add(newDebt);
-                    _currentDebtor.AmountOwed = await _database.GetTotalDebtForDebtor(_currentDebtor.Id);
                 }
 
             }
@@ -148,7 +145,6 @@ namespace Debt_Book.Viewmodels
                 {
                     newDebt.Id = rowsAffected;
                     Debts.Add(newDebt);
-                    _currentDebtor.AmountOwed = await _database.GetTotalDebtForDebtor(_currentDebtor.Id);
                 }
             }
             else

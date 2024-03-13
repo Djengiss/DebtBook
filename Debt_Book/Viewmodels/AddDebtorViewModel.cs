@@ -65,8 +65,7 @@ namespace Debt_Book.Viewmodels
             {
                 var debtor = new Debtor
                 {
-                    Name = Name,
-                    AmountOwed = 0.0
+                    Name = Name
                 };
 
                 await _debtDatabase.AddDebtor(debtor);
@@ -78,8 +77,6 @@ namespace Debt_Book.Viewmodels
                     DebtorId = debtor.Id
                     
                 };
-
-                debtor.AmountOwed = await _debtDatabase.GetTotalDebtForDebtor(debtor.Id);
 
                 await _debtDatabase.AddDebt(newDebt);
                 _debtorAddedCallback?.Invoke(debtor);
@@ -100,8 +97,7 @@ namespace Debt_Book.Viewmodels
             {
                 var debtor = new Debtor
                 {
-                    Name = Name,
-                    AmountOwed = 0.0
+                    Name = Name
                 };
 
                 await _debtDatabase.AddDebtor(debtor);
@@ -114,7 +110,6 @@ namespace Debt_Book.Viewmodels
 
                 };
 
-                debtor.AmountOwed = await _debtDatabase.GetTotalDebtForDebtor(debtor.Id);
 
                 await _debtDatabase.AddDebt(newDebt);
                 _debtorAddedCallback?.Invoke(debtor);
