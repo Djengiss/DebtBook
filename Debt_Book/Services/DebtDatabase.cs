@@ -79,5 +79,11 @@ namespace Debt_Book.Services
         {
             return await _connection.InsertAsync(debtor);
         }
+
+        public async Task<double> GetTotalDebtForDebtor(int debtorId)
+        {
+            var debts = await GetDebts(debtorId);
+            return debts.Sum(debt => debt.Amount);
+        }
     }
 }
