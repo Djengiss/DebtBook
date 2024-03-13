@@ -35,8 +35,8 @@
     <LinearGradientBrush x:Key="BackgroundGradient"
                      StartPoint="0,0"
                      EndPoint="0,1">
-    <GradientStop Color="#6A4987" Offset="0.0"/> <!-- Darker shade of purple -->
-    <GradientStop Color="#1A237E" Offset="1.0"/> <!-- Darker shade of blue -->
+        <GradientStop Color="#ece0cd" Offset="0.0"/> <!-- Darker shade of purple -->
+        <GradientStop Color="#b69f7c" Offset="1.0"/> <!-- Darker shade of blue -->
 </LinearGradientBrush>
 
     <Color x:Key="Yellow100Accent">#F7B548</Color>
