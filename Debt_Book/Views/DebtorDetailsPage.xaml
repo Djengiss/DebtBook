@@ -17,6 +17,15 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+
+        <Image
+            Grid.RowSpan="6"
+            Grid.ColumnSpan="2"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            Source="peaky.jpg"
+            VerticalOptions="FillAndExpand"
+            Opacity="0.2"/>
         <!--Name of Current Debtor-->
         <Label Grid.Row="1"
                Text="{Binding CurrentPersonName}"
