@@ -38,16 +38,18 @@ namespace Debt_Book.Viewmodels
         }
         private readonly INavigationService _navigationService;
         private readonly DebtDatabase _debtDatabase;
+        private readonly Action<Debtor> _debtorAddedCallback;
 
         public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public AddDebtorViewModel(INavigationService navigationService, DebtDatabase debtDatabase)
+        public AddDebtorViewModel(INavigationService navigationService, DebtDatabase debtDatabase, Action<Debtor> debtorAddedCallback)
         {
             _navigationService = navigationService;
             _debtDatabase = debtDatabase;
+            _debtorAddedCallback = debtorAddedCallback;
             SaveCommand = new Command(async () => await SaveDebt());
             CancelCommand = new Command(async () => await CancelAndNavigateBack());
 
@@ -73,7 +75,8 @@ namespace Debt_Book.Viewmodels
                 };
 
                 await _debtDatabase.AddDebt(debt);
-                MessagingCenter.Send(this, "NewDebtorAdded", debtor);
+                //MessagingCenter.Send(this, "NewDebtorAdded", debtor);
+                _debtorAddedCallback?.Invoke(debtor);
 
                 ClearInputFields();
                 await _navigationService.PopAsync();

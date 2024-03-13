@@ -26,17 +26,12 @@ namespace Debt_Book.Viewmodels
             _navigationService = navigationService;
             _database = new DebtDatabase();
 
-            MessagingCenter.Subscribe<AddDebtorViewModel, Debtor>(this, "NewDebtorAdded", (sender, newDebtor) =>
-            {
-                Debtors.Add(newDebtor);
-            });
-            
             ViewDebtorInfoCommand = new Command<Debtor>(async (selecteddebtor) => await ViewDebtorInfo(selecteddebtor));
             _ = Initialize();
         }
+
         private async Task Initialize()
         {
-            
             var debtors = await _database.GetDebtors();
 
             foreach(var debtor in debtors)
@@ -47,9 +42,14 @@ namespace Debt_Book.Viewmodels
 
         public ICommand AddNewDebtorCommand => new Command(async () =>
         {
-            var addDebtorViewModel = new AddDebtorViewModel(_navigationService, _database);
+            var addDebtorViewModel = new AddDebtorViewModel(_navigationService, _database, DebtorAddedCallback);
             await _navigationService.NavigateToAsync(addDebtorViewModel);
         });
+
+        private void DebtorAddedCallback(Debtor newDebtor)
+        {
+            Debtors.Add(newDebtor);
+        }
 
         private async Task ViewDebtorInfo(Debtor selectedDebtor)
         {
