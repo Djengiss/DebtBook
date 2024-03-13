@@ -73,12 +73,24 @@
 
         
         <Button Grid.Row="3"
-                x:Name="SaveBtn"
-                Command="{Binding SaveCommand}"
+                
+                Command="{Binding AddDebtCommand}"
+                BackgroundColor="red"
                 HeightRequest="75"
                 WidthRequest="200"
                 Grid.ColumnSpan="1"
-                Text="Save"
+                Text="Add Debt"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" 
+                />
+        <Button Grid.Row="2"
+                
+                Command="{Binding AddCreditCommand}"
+                BackgroundColor="Green"
+                HeightRequest="75"
+                WidthRequest="200"
+                Grid.ColumnSpan="1"
+                Text="Add Credit"
                 HorizontalOptions="Center"
                 VerticalOptions="Center" 
                 />

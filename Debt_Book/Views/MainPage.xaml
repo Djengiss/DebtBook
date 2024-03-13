@@ -39,8 +39,7 @@
 
         <Frame Grid.Row="1"
            Grid.ColumnSpan="1"
-           BackgroundColor="Transparent"
-               WidthRequest="550"
+           BackgroundColor="Transparent"     
            Padding="0"
            HorizontalOptions="Center"
            VerticalOptions="Center"
@@ -49,7 +48,6 @@
                 ItemsSource="{Binding Debtors}"
                             SelectionMode="Single"
                             SelectedItem="{Binding SelectedDebtor, Mode=TwoWay}"
-                            WidthRequest="500"
                             Margin="20" 
                             EmptyView="No debtors to display.">
                 <CollectionView.ItemTemplate>
@@ -70,7 +68,7 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                        TextColor="White"
-                                        WidthRequest="500"
+                                        
                                         HeightRequest="75"/>
                                 <Label Text="{Binding AmountOwed, StringFormat='{0:C}'}" 
                                     Grid.Row="0"

@@ -3,6 +3,7 @@ using Debt_Book.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,9 @@ namespace Debt_Book.Viewmodels
         private readonly DebtDatabase _debtDatabase;
         private readonly Action<Debtor> _debtorAddedCallback;
 
-        public ICommand SaveCommand { get; set; }
+        /*public ICommand SaveCommand { get; set; }*/
+        public ICommand AddDebtCommand { get; set; }
+        public ICommand AddCreditCommand { get; set; }
         public ICommand CancelCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -50,38 +53,102 @@ namespace Debt_Book.Viewmodels
             NavigationService = navigationService;
             _debtDatabase = debtDatabase;
             _debtorAddedCallback = debtorAddedCallback;
-            SaveCommand = new Command(async () => await SaveDebt());
+            //SaveCommand = new Command(async () => await SaveDebt());
+            AddCreditCommand = new Command(async () => await AddCredit());
+            AddDebtCommand = new Command(async () => await AddDebt());
             CancelCommand = new Command(async () => await CancelAndNavigateBack());
 
         }
 
-        private async Task SaveDebt()
+        //private async Task SaveDebt()
+        //{
+        //    if (!string.IsNullOrEmpty(Name) && InitialValue > 0)
+        //    {
+
+        //        var debtor = new Debtor
+        //        {
+        //            Name = Name,
+        //            AmountOwed = InitialValue
+        //        };
+
+        //        await _debtDatabase.AddDebtor(debtor);
+
+        //        var debt = new Debt
+        //        {
+        //            DebtorId = debtor.Id,
+        //            Amount = InitialValue,
+        //        };
+
+        //        await _debtDatabase.AddDebt(debt);
+        //        _debtorAddedCallback?.Invoke(debtor);
+
+        //        ClearInputFields();
+        //        await NavigationService.PopAsync();
+        //    }
+        //}
+        private async Task AddDebt()
         {
+
             if (!string.IsNullOrEmpty(Name) && InitialValue > 0)
             {
-
                 var debtor = new Debtor
                 {
                     Name = Name,
-                    AmountOwed = InitialValue
+                    AmountOwed = 0
                 };
 
                 await _debtDatabase.AddDebtor(debtor);
 
-                var debt = new Debt
+                Debt newDebt = new Debt
                 {
-                    DebtorId = debtor.Id,
-                    Amount = InitialValue,
+                    Amount = -InitialValue,
+                    Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                    DebtorId = debtor.Id
+                    
                 };
-
-                await _debtDatabase.AddDebt(debt);
+                await _debtDatabase.AddDebt(newDebt);
                 _debtorAddedCallback?.Invoke(debtor);
 
                 ClearInputFields();
                 await NavigationService.PopAsync();
             }
+            else
+            {
+                return;
+            }
         }
 
+        private async Task AddCredit()
+        {
+
+            if (!string.IsNullOrEmpty(Name) && InitialValue > 0)
+            {
+                var debtor = new Debtor
+                {
+                    Name = Name,
+                    AmountOwed = 0
+                };
+
+                await _debtDatabase.AddDebtor(debtor);
+
+                Debt newDebt = new Debt
+                {
+                    Amount = InitialValue,
+                    Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                    DebtorId = debtor.Id
+
+                };
+                await _debtDatabase.AddDebt(newDebt);
+                _debtorAddedCallback?.Invoke(debtor);
+
+                ClearInputFields();
+                await NavigationService.PopAsync();
+            }
+            else
+            {
+                return;
+            }
+        }
         private void ClearInputFields()
         {
             Name = string.Empty;
