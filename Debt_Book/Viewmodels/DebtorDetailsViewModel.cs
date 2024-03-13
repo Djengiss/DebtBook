@@ -78,7 +78,7 @@ namespace Debt_Book.Viewmodels
 
         public DebtorDetailsViewModel(INavigationService navigationService, Debtor selectedDebtor)
         {
-           
+            NavigationService = navigationService;
             _currentDebtor = selectedDebtor;
             _Amount = selectedDebtor.AmountOwed;
             _database = new DebtDatabase();

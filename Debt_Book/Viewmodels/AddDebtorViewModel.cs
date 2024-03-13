@@ -47,7 +47,7 @@ namespace Debt_Book.Viewmodels
 
         public AddDebtorViewModel(INavigationService navigationService, DebtDatabase debtDatabase, Action<Debtor> debtorAddedCallback)
         {
-            
+            NavigationService = navigationService;
             _debtDatabase = debtDatabase;
             _debtorAddedCallback = debtorAddedCallback;
             SaveCommand = new Command(async () => await SaveDebt());
@@ -75,7 +75,6 @@ namespace Debt_Book.Viewmodels
                 };
 
                 await _debtDatabase.AddDebt(debt);
-                //MessagingCenter.Send(this, "NewDebtorAdded", debtor);
                 _debtorAddedCallback?.Invoke(debtor);
 
                 ClearInputFields();

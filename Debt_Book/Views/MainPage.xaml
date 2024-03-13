@@ -55,7 +55,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10"
-                              
+                             HeightRequest="50" 
                             Margin="5"
                             CornerRadius="10" 
                             BorderColor="Gray"                         
@@ -66,18 +66,18 @@
                                 <Label Text="{Binding Name}"
                                         FontAttributes="Bold" 
                                         HorizontalOptions="StartAndExpand"
-                                        FontSize="Large"
+                                        FontSize="Medium"
                                         Grid.Row="0"
                                         Grid.Column="0"
                                        TextColor="White"
                                         WidthRequest="500"
                                         HeightRequest="75"/>
                                 <Label Text="{Binding AmountOwed, StringFormat='{0:C}'}" 
-                                    Grid.Row="1"
+                                    Grid.Row="0"
                                        WidthRequest="200"
                                        HeightRequest="75"
-                                Grid.Column="0"
-                                FontSize="Medium"
+                                Grid.Column="1"
+                                FontSize="Small"
                                 HorizontalOptions="StartAndExpand"
                                        TextColor="White"/>
                             </Grid>
