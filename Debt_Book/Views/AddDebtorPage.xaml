@@ -68,9 +68,7 @@
                HasShadow="False">
             <Entry Grid.Row="2"
                    Text="{Binding InitialValue, StringFormat='{0:N2}', Mode=TwoWay}"
-                   Keyboard="Numeric"
                    Grid.ColumnSpan="2"
-                   Placeholder="Initial Value"
                    FontSize="48"
                    />
         </Frame>
