@@ -24,46 +24,23 @@
                FontSize="32"
                TextColor="black"/>
 
-        <!--Scrollview of history-->
-        <!--<ScrollView Grid.Row="2"
-                    Grid.RowSpan="2"
-                    Grid.Column="0"
-                    BackgroundColor="Transparent"
-                    Padding="0"
-                    HorizontalOptions="Center">
-            <StackLayout>
-                <CollectionView ItemsSource="{Binding Debts}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Label Text="{Binding Date}" 
-                                       TextColor="Black"/>
-                                <Label Text="{Binding Amount}" 
-                                       TextColor="Black"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-        </ScrollView>-->
+
         <Frame Grid.Row="2"
            Grid.ColumnSpan="1"
-               Grid.RowSpan="3"
+               Grid.RowSpan="2"
            BackgroundColor="Transparent"
-           WidthRequest="550"
            Padding="0"
            HorizontalOptions="Center"
            VerticalOptions="Start"
            HasShadow="False">
             <CollectionView Grid.Row="2"
                 ItemsSource="{Binding Debts}"
-                WidthRequest="500"
                 Margin="20" 
                 EmptyView="No debt to display.">
                  <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10"
-                               
+                               HeightRequest="50"
                                 Margin="5"
                                 CornerRadius="10" 
                                 BorderColor="Gray"                         
@@ -74,20 +51,16 @@
                                 <Label Text="{Binding Amount, StringFormat='{0:C}'}"
                                         FontAttributes="Bold" 
                                         HorizontalOptions="StartAndExpand"
-                                        FontSize="Large"
+                                        FontSize="Small"
                                         Grid.Row="0"
                                         Grid.Column="0"
-                                       TextColor="White"
-                                        WidthRequest="500"
-                                        HeightRequest="75"/>
+                                       />
                                     <Label Text="{Binding Date}" 
                                     Grid.Row="0"
-                                       WidthRequest="200"
-                                       HeightRequest="75"
                                 Grid.Column="1"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 HorizontalOptions="StartAndExpand"
-                                       TextColor="White"/>
+                                       />
                               </Grid>
                             </Frame>
                         </DataTemplate>
@@ -99,11 +72,9 @@
 
         <!--Button to return to main page-->
         <Button Grid.Row="4"
-                x:Name="CloseBtn"
-                HeightRequest="75"
-                WidthRequest="200"
                 Grid.Column="0"
                 Text="Return"
+                BackgroundColor="{StaticResource ButtonReturn}"
                 Command="{Binding ReturnCommand}"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
@@ -112,25 +83,23 @@
         <Frame Grid.Row="1"
                Grid.Column="1"
                HeightRequest="75"
+               MinimumWidthRequest="200"
+               MaximumHeightRequest="400"
                BackgroundColor="Transparent"
                Padding="0"
                HorizontalOptions="Center">
             <Entry Placeholder="Enter Amount"
-                   WidthRequest="200"
-                   FontSize="24"
-                   TextColor="Black"
+                   MinimumWidthRequest="195"
                    HorizontalOptions="Center"
+                   FontSize="Large"
                    Text="{Binding Value, Mode=TwoWay}" />
         </Frame>
 
         <!--Button to add cancel entry-->
         <Button Grid.Row="2"
                 Grid.Column="1"
-                x:Name="CancelBtn"
-                HeightRequest="75"
-                WidthRequest="200"
                 Text="Clear Field"
-                BackgroundColor="yellow"
+                BackgroundColor="{StaticResource ButtonReturn}"
                 Command="{Binding CancelCommand}"
                 HorizontalOptions="Center"
 
@@ -139,10 +108,7 @@
         <!--Button to add debt-->
         <Button Grid.Row="3"
                 Grid.Column="1"
-                x:Name="DebtBtn"
-                BackgroundColor="Red"
-                HeightRequest="75"
-                WidthRequest="200"
+                BackgroundColor="{StaticResource ButtonRed}"
                 Text="Add Debt"
                 Command="{Binding AddDebtCommand}"
                 HorizontalOptions="Center"
@@ -151,11 +117,7 @@
         <!--Button to add credit-->
         <Button Grid.Row="4"
                 Grid.Column="1"
-                x:Name="CreditBtn"
-                HeightRequest="75"
-                WidthRequest="200"
                 Text="Add Credit"
-                BackgroundColor="green"
                 Command="{Binding AddCreditCommand}"
                 HorizontalOptions="Center"
         />
