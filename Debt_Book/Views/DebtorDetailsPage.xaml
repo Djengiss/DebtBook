@@ -25,7 +25,7 @@
                TextColor="black"/>
 
         <!--Scrollview of history-->
-        <ScrollView Grid.Row="2"
+        <!--<ScrollView Grid.Row="2"
                     Grid.RowSpan="2"
                     Grid.Column="0"
                     BackgroundColor="Transparent"
@@ -36,16 +36,65 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
-                                <Label Text="{Binding Date}" />
-                                <Label Text="{Binding Amount}" />
+                                <Label Text="{Binding Date}" 
+                                       TextColor="Black"/>
+                                <Label Text="{Binding Amount}" 
+                                       TextColor="Black"/>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </StackLayout>
-        </ScrollView>
-        
-        
+        </ScrollView>-->
+        <Frame Grid.Row="2"
+           Grid.ColumnSpan="1"
+               Grid.RowSpan="3"
+           BackgroundColor="Transparent"
+           WidthRequest="550"
+           Padding="0"
+           HorizontalOptions="Center"
+           VerticalOptions="Start"
+           HasShadow="False">
+            <CollectionView Grid.Row="2"
+                ItemsSource="{Binding Debts}"
+                WidthRequest="500"
+                Margin="20" 
+                EmptyView="No debt to display.">
+                 <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10"
+                               HeightRequest="100"
+                            Margin="5"
+                            CornerRadius="10" 
+                            BorderColor="Gray"                         
+                            HasShadow="True">
+                                <Grid ColumnDefinitions="7*,5*"
+                                RowDefinitions="Auto,Auto" 
+                                RowSpacing="1">
+                                <Label Text="{Binding Amount, StringFormat='{0:C}'}"
+                                        FontAttributes="Bold" 
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="Large"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                       TextColor="White"
+                                        WidthRequest="500"
+                                        HeightRequest="75"/>
+                                    <Label Text="{Binding date}" 
+                                    Grid.Row="1"
+                                       WidthRequest="200"
+                                       HeightRequest="75"
+                                Grid.Column="0"
+                                FontSize="Medium"
+                                HorizontalOptions="StartAndExpand"
+                                       TextColor="White"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+            </CollectionView>
+         </Frame>
+
 
 
         <!--Button to return to main page-->

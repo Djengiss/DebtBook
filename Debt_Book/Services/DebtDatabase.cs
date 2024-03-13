@@ -46,11 +46,11 @@ namespace Debt_Book.Services
             return await _connection.Table<Debtor>().ToListAsync();
         }
 
-        public async Task<Debt> GetDebt(int id)
+        public async Task<List<Debt>> GetDebts(int debtorId)
         {
-            var query = _connection.Table<Debt>().Where(t => t.DebtorId == id);
+            var query = _connection.Table<Debt>().Where(t => t.DebtorId == debtorId);
 
-            return await query.FirstOrDefaultAsync();
+            return await query.ToListAsync();
         }
 
         public async Task<Debtor> GetDebtorId(string name)

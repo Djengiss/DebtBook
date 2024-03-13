@@ -45,6 +45,17 @@ namespace Debt_Book.Viewmodels
             }
         }
 
+        private double _Amount;
+        public double Amount
+        {
+            get => _Amount;
+            set
+            {
+                _Amount = value;
+                OnPropertyChanged(nameof(Amount));
+            }
+        }
+
         private ObservableCollection<Debt> _debts;
         public ObservableCollection<Debt> Debts
         {
@@ -69,7 +80,9 @@ namespace Debt_Book.Viewmodels
         {
             _navigationService = navigationService;
             _currentDebtor = selectedDebtor;
+            _Amount = selectedDebtor.AmountOwed;
             _database = new DebtDatabase();
+            
 
             if (selectedDebtor == null)
             {
@@ -83,7 +96,7 @@ namespace Debt_Book.Viewmodels
                 AddDebtCommand = new Command(async () => await AddDebt());
                 AddCreditCommand = new Command(async () => await AddCredit());
                 CurrentPersonName = CurrentDebtor.Name;
-                Value = CurrentDebtor.AmountOwed;
+                Amount = CurrentDebtor.AmountOwed;
                 _ = LoadDebtsForCurrentDebtor();
             }
             catch (Exception ex)
@@ -106,6 +119,12 @@ namespace Debt_Book.Viewmodels
                     DebtorId = _currentDebtor.Id,
                 };
                 int rowsAffected = await _database.AddDebt(newDebt);
+                if (rowsAffected > 0)
+                {
+                    newDebt.Id = rowsAffected;
+                    Debts.Add(newDebt);
+                }
+
             }
             else
             {
@@ -124,6 +143,11 @@ namespace Debt_Book.Viewmodels
                     DebtorId = _currentDebtor.Id,
                 };
                 int rowsAffected = await _database.AddDebt(newDebt);
+                if (rowsAffected > 0)
+                {
+                    newDebt.Id = rowsAffected;
+                    Debts.Add(newDebt);
+                }
             }
             else
             {
@@ -134,6 +158,7 @@ namespace Debt_Book.Viewmodels
 
         private async Task Return()
         {
+            _currentDebtor = null;
             await _navigationService.PopAsync();
         }
 
@@ -146,7 +171,7 @@ namespace Debt_Book.Viewmodels
         {
             if (_currentDebtor != null)
             {
-                return null;// await _database.GetDebt(_currentDebtor.Id);
+                return await _database.GetDebts(_currentDebtor.Id);
                  
             }
             else
@@ -159,9 +184,6 @@ namespace Debt_Book.Viewmodels
         {
             Debts = new ObservableCollection<Debt>(await GetDebts());
         }
-
-
-
 
     }
 }
