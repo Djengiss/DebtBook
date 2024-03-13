@@ -30,6 +30,7 @@ namespace Debt_Book.Viewmodels
 
         private async Task Initialize()
         {
+            Debtors.Clear();
             var debtors = await _database.GetDebtors();
 
             foreach (var debtor in debtors)
@@ -59,7 +60,7 @@ namespace Debt_Book.Viewmodels
         {
             if (selectedDebtor != null)
             {
-                var debtorDetailsViewModel = new DebtorDetailsViewModel(NavigationService, _database,selectedDebtor);
+                var debtorDetailsViewModel = new DebtorDetailsViewModel(NavigationService, _database ,selectedDebtor, DebtModifiedCallback);
                 await NavigationService.NavigateToAsync(debtorDetailsViewModel);
                 
             }

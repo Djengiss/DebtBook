@@ -38,7 +38,6 @@ namespace Debt_Book.Services
             }
         }
      
-
         public async Task PopAsync()
         {
             await Application.Current.MainPage.Navigation.PopAsync();

@@ -127,7 +127,6 @@ namespace Debt_Book.Viewmodels
         {
             Name = string.Empty;
             InitialValue = 0;
-            
         }
 
         private async Task CancelAndNavigateBack()
@@ -140,6 +139,5 @@ namespace Debt_Book.Viewmodels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

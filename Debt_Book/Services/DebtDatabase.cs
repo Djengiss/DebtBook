@@ -35,6 +35,7 @@ namespace Debt_Book.Services
 
             _ = Initialize();
         }
+
         private async Task Initialize()
         {
             await _connection.CreateTableAsync<Debtor>();
@@ -53,26 +54,9 @@ namespace Debt_Book.Services
             return await query.ToListAsync();
         }
 
-        public async Task<Debtor> GetDebtorId(string name)
-        {
-            var query = _connection.Table<Debtor>().Where(t => t.Name == name);
-
-            return await query.FirstOrDefaultAsync();
-        }
-
         public async Task<int> AddDebt(Debt item)
         {
             return await _connection.InsertAsync(item);
-        }
-
-        public async Task<int> DeleteDebt(Debt item)
-        {
-            return await _connection.DeleteAsync(item);
-        }
-
-        public async Task<int> UpdateDebt(Debt item)
-        {
-            return await _connection.UpdateAsync(item);
         }
 
         public async Task<int> AddDebtor(Debtor debtor)

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
@@ -76,12 +77,12 @@ namespace Debt_Book.Viewmodels
         public ICommand AddCreditCommand { get; }
 
 
-        public DebtorDetailsViewModel(INavigationService navigationService, DebtDatabase database, Debtor selectedDebtor)
+        public DebtorDetailsViewModel(INavigationService navigationService, DebtDatabase database, Debtor selectedDebtor, Action<Debtor> debtModifiedCallback)
         {
             NavigationService = navigationService;
             _currentDebtor = selectedDebtor;
             _database = database;
-            
+            _debtModifiedCallback = debtModifiedCallback;
 
             if (selectedDebtor == null)
             {
