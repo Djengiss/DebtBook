@@ -70,7 +70,7 @@
                                        TextColor="White"
                                         
                                         HeightRequest="75"/>
-                                <Label Text="{Binding AmountOwed, StringFormat='{0:C}'}" 
+                                <Label Text="{Binding Debts, StringFormat='{0:C}'}" 
                                     Grid.Row="0"
                                        WidthRequest="200"
                                        HeightRequest="75"

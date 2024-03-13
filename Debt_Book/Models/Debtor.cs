@@ -18,6 +18,5 @@ namespace Debt_Book.Models
         public string Name { get; set; }
 
         public List<Debt> Debts { get; set; }
-        //public double AmountOwed { get; set; }
     }
 }
