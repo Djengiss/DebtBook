@@ -67,7 +67,7 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-        private readonly INavigationService _navigationService;
+        
         private readonly DebtDatabase _database;
 
         public ICommand ReturnCommand { get; }
@@ -78,7 +78,7 @@ namespace Debt_Book.Viewmodels
 
         public DebtorDetailsViewModel(INavigationService navigationService, Debtor selectedDebtor)
         {
-            _navigationService = navigationService;
+           
             _currentDebtor = selectedDebtor;
             _Amount = selectedDebtor.AmountOwed;
             _database = new DebtDatabase();
@@ -147,6 +147,7 @@ namespace Debt_Book.Viewmodels
                 {
                     newDebt.Id = rowsAffected;
                     Debts.Add(newDebt);
+
                 }
             }
             else
@@ -159,7 +160,7 @@ namespace Debt_Book.Viewmodels
         private async Task Return()
         {
             _currentDebtor = null;
-            await _navigationService.PopAsync();
+            await NavigationService.PopAsync();
         }
 
         private void Cancel()

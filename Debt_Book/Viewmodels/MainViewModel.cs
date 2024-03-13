@@ -14,18 +14,15 @@ namespace Debt_Book.Viewmodels
 {
     internal class MainViewModel : ViewModelBase
     {
-        public ObservableCollection<Debtor> Debtors { get; set; } = new();
-        
+        public ObservableCollection<Debtor> Debtors { get; set; } = new(); 
         public ICommand ViewDebtorInfoCommand { get; set; }
         private readonly DebtDatabase _database;
-        private readonly INavigationService _navigationService;
+      
        
 
         public MainViewModel(INavigationService navigationService)
         {
-            _navigationService = navigationService;
             _database = new DebtDatabase();
-
             ViewDebtorInfoCommand = new Command<Debtor>(async (selecteddebtor) => await ViewDebtorInfo(selecteddebtor));
             _ = Initialize();
         }
@@ -42,8 +39,8 @@ namespace Debt_Book.Viewmodels
 
         public ICommand AddNewDebtorCommand => new Command(async () =>
         {
-            var addDebtorViewModel = new AddDebtorViewModel(_navigationService, _database, DebtorAddedCallback);
-            await _navigationService.NavigateToAsync(addDebtorViewModel);
+            var addDebtorViewModel = new AddDebtorViewModel(NavigationService, _database, DebtorAddedCallback);
+            await NavigationService.NavigateToAsync(addDebtorViewModel);
         });
 
         private void DebtorAddedCallback(Debtor newDebtor)
@@ -55,8 +52,8 @@ namespace Debt_Book.Viewmodels
         {
             if (selectedDebtor != null)
             {
-                var debtorDetailsViewModel = new DebtorDetailsViewModel(_navigationService, selectedDebtor);
-                await _navigationService.NavigateToAsync(debtorDetailsViewModel);
+                var debtorDetailsViewModel = new DebtorDetailsViewModel(NavigationService, selectedDebtor);
+                await NavigationService.NavigateToAsync(debtorDetailsViewModel);
                 
             }
             else

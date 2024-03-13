@@ -80,7 +80,7 @@
                                        TextColor="White"
                                         WidthRequest="500"
                                         HeightRequest="75"/>
-                                    <Label Text="{Binding date}" 
+                                    <Label Text="{Binding Date}" 
                                     Grid.Row="1"
                                        WidthRequest="200"
                                        HeightRequest="75"
