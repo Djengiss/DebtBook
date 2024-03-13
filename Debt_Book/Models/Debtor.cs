@@ -14,10 +14,8 @@ namespace Debt_Book.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [PrimaryKey]
         public string Name { get; set; }
 
-        public List<Debt> Debts { get; set; }
-
+        public double AmountOwed { get; set; }
     }
 }

@@ -16,13 +16,9 @@ namespace Debt_Book.Viewmodels
     {
         public ObservableCollection<Debtor> Debtors { get; set; } = new();
 
-        
-        
         public ICommand ViewDebtorInfoCommand { get; set; }
         private readonly DebtDatabase _database;
       
-       
-
         public MainViewModel(INavigationService navigationService)
         {
             NavigationService = navigationService;
@@ -36,10 +32,10 @@ namespace Debt_Book.Viewmodels
         {
             var debtors = await _database.GetDebtors();
 
-            foreach(var debtor in debtors)
+            foreach (var debtor in debtors)
             {
+                debtor.AmountOwed = await _database.GetTotalDebtForDebtor(debtor.Id);
                 Debtors.Add(debtor);
-                
             }
         }
 
@@ -54,11 +50,16 @@ namespace Debt_Book.Viewmodels
             Debtors.Add(newDebtor);
         }
 
+        private async void DebtModifiedCallback(Debtor debtor)
+        {
+            debtor.AmountOwed = await _database.GetTotalDebtForDebtor(debtor.Id);
+        }
+
         private async Task ViewDebtorInfo(Debtor selectedDebtor)
         {
             if (selectedDebtor != null)
             {
-                var debtorDetailsViewModel = new DebtorDetailsViewModel(NavigationService, selectedDebtor);
+                var debtorDetailsViewModel = new DebtorDetailsViewModel(NavigationService, _database,selectedDebtor);
                 await NavigationService.NavigateToAsync(debtorDetailsViewModel);
                 
             }
@@ -84,8 +85,8 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
+        new public event PropertyChangedEventHandler PropertyChanged;
+        new protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

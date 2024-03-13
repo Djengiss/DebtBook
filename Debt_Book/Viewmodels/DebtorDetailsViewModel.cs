@@ -18,6 +18,7 @@ namespace Debt_Book.Viewmodels
     internal class DebtorDetailsViewModel : ViewModelBase
     {
         private Debtor _currentDebtor;
+        private readonly Action<Debtor> _debtModifiedCallback;
         public Debtor CurrentDebtor
         {
             get => _currentDebtor;
@@ -67,7 +68,6 @@ namespace Debt_Book.Viewmodels
             }
         }
 
-        
         private readonly DebtDatabase _database;
 
         public ICommand ReturnCommand { get; }
@@ -76,11 +76,11 @@ namespace Debt_Book.Viewmodels
         public ICommand AddCreditCommand { get; }
 
 
-        public DebtorDetailsViewModel(INavigationService navigationService, Debtor selectedDebtor)
+        public DebtorDetailsViewModel(INavigationService navigationService, DebtDatabase database, Debtor selectedDebtor)
         {
             NavigationService = navigationService;
             _currentDebtor = selectedDebtor;
-            _database = new DebtDatabase();
+            _database = database;
             
 
             if (selectedDebtor == null)
@@ -122,7 +122,7 @@ namespace Debt_Book.Viewmodels
                     newDebt.Id = rowsAffected;
                     Debts.Add(newDebt);
                 }
-
+                _debtModifiedCallback?.Invoke(CurrentDebtor);
             }
             else
             {
@@ -146,6 +146,7 @@ namespace Debt_Book.Viewmodels
                     newDebt.Id = rowsAffected;
                     Debts.Add(newDebt);
                 }
+                _debtModifiedCallback?.Invoke(CurrentDebtor);
             }
             else
             {
@@ -156,7 +157,6 @@ namespace Debt_Book.Viewmodels
 
         private async Task Return()
         {
-            _currentDebtor = null;
             await NavigationService.PopAsync();
         }
 
@@ -182,6 +182,12 @@ namespace Debt_Book.Viewmodels
         {
             Debts = new ObservableCollection<Debt>(await GetDebts());
         }
+
+        //new public event PropertyChangedEventHandler PropertyChanged;
+        //new protected virtual void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
     }
 }

@@ -79,6 +79,7 @@ namespace Debt_Book.Viewmodels
                 };
 
                 await _debtDatabase.AddDebt(newDebt);
+                debtor.AmountOwed = await _debtDatabase.GetTotalDebtForDebtor(debtor.Id);
                 _debtorAddedCallback?.Invoke(debtor);
 
                 ClearInputFields();
@@ -110,8 +111,8 @@ namespace Debt_Book.Viewmodels
 
                 };
 
-
                 await _debtDatabase.AddDebt(newDebt);
+                debtor.AmountOwed = await _debtDatabase.GetTotalDebtForDebtor(debtor.Id);
                 _debtorAddedCallback?.Invoke(debtor);
 
                 ClearInputFields();
