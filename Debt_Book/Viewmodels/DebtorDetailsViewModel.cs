@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Globalization;
 
 // Responsible for providing data and logic for the DebtorDetailsPage.xaml.
 // Handles interactions and data binding for the debtor details page.
@@ -82,6 +83,7 @@ namespace Debt_Book.Viewmodels
                 AddDebtCommand = new Command(async () => await AddDebt());
                 AddCreditCommand = new Command(async () => await AddCredit());
                 CurrentPersonName = CurrentDebtor.Name;
+                Value = CurrentDebtor.AmountOwed;
                 _ = LoadDebtsForCurrentDebtor();
             }
             catch (Exception ex)
@@ -144,7 +146,8 @@ namespace Debt_Book.Viewmodels
         {
             if (_currentDebtor != null)
             {
-                return null;/*await _database.GetDebt(_currentDebtor.Id);*/
+                return null;// await _database.GetDebt(_currentDebtor.Id);
+                 
             }
             else
             {

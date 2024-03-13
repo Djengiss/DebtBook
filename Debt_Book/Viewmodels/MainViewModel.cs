@@ -53,10 +53,31 @@ namespace Debt_Book.Viewmodels
 
         private async Task ViewDebtorInfo(Debtor selectedDebtor)
         {
-            if (selectedDebtor == null)
+            if (selectedDebtor != null)
             {
                 var debtorDetailsViewModel = new DebtorDetailsViewModel(_navigationService, selectedDebtor);
                 await _navigationService.NavigateToAsync(debtorDetailsViewModel);
+                
+            }
+            else
+            {
+                Console.WriteLine("no debtor selected");
+            }
+        }
+
+        private Debtor _selectedDebtor;
+        public Debtor SelectedDebtor
+        {
+            get => _selectedDebtor;
+            set
+            {
+                if (_selectedDebtor != value)
+                {
+                    _selectedDebtor = value;
+                    OnPropertyChanged(nameof(SelectedDebtor));
+                    // Call the command manually or handle navigation here if you want
+                    ViewDebtorInfoCommand.Execute(_selectedDebtor);
+                }
             }
         }
 

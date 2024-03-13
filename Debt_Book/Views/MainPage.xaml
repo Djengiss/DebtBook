@@ -48,8 +48,7 @@
             <CollectionView Grid.Row="2"
                 ItemsSource="{Binding Debtors}"
                             SelectionMode="Single"
-                            SelectionChangedCommand="{Binding ViewDebtorInfoCommand}"
-                            SelectionChangedCommandParameter="{Binding SelectedItem}"
+                            SelectedItem="{Binding SelectedDebtor, Mode=TwoWay}"
                             WidthRequest="500"
                             Margin="20" 
                             EmptyView="No debtors to display.">
